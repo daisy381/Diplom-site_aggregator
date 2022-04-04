@@ -8,6 +8,7 @@ export const NavbarContainer = styled.div`
   display:flex;
   margin-left:284px;
   align-items: center;
+  justify-content: space-between;
   height:66px;
   background-color:#323232;
 `;
@@ -44,16 +45,46 @@ export const InputContainer = styled.div`
   align-items: center;
 `;
 
-export const AvatarSC =styled(Avatar)`
-  color: #f56a00;
-  background-color: #fde3cf;
+export const NavbarItemContainer = styled.div`
+  width: 480px;
+  display: flex;
+  align-items: center;
+    
 `;
 
-export const NavbarItemContainer = styled.div`
-  width: 400px;
-  display: flex;
-    
+export const AvatarSC =styled(Avatar)`
+  width: 38px;
+  height: 38px;
+  font-size:22px;
+  margin-left: 10px;
+  color: #f56a00;
+  background-color: #fde3cf;
+  
+  & .ant-avatar-string{
+    top:3px;
+  }
 `;
+
 export const ButtonContainer = styled(Button)`
-    
-`
+  height: 32px;
+  color: #dbdbdb;
+  border: 1px solid #feb04a;
+  border-radius: 2px;
+  background-color:#323232;
+  padding-right:10px;
+  
+  &:hover{
+    transition: background-color .2s ease,margin .2s ease;
+    background: #feb04a;
+    color: #fff;
+    border: 1px solid #feb04a
+  }
+`;
+
+export const LiItemContainer = styled.li`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  list-style: none;
+  height: 60px;
+`;

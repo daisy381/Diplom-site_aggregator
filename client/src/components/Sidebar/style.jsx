@@ -52,6 +52,8 @@ export const SideContainer= styled.nav`
 
 export const UlContainer = styled.ul`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const LiItemContainer = styled.li`
@@ -95,6 +97,6 @@ export const H5Container = styled.h5`
 `;
 
 export const HrContainer =  styled.hr`
-  margin: 40px auto 100px auto;
+  margin: 40px auto auto auto;
   width: 80%;
 `;

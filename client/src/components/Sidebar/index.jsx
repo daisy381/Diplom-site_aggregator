@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {useAuth0} from "@auth0/auth0-react";
 
 //components
-import {SidebarConfigContainer} from "./sidebarConfigData";
+import {SidebarConfigContainer} from "./sidebarConfigContainer";
 
 //data
 import {SidebarData} from "./SidebarData";

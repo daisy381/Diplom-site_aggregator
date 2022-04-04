@@ -9,15 +9,18 @@ import {
     InputContainer,
     ButtonContainer,
     AvatarSC,
-    NavbarItemContainer
+    NavbarItemContainer,
+    LiItemContainer
 } from "./style";
 import "antd/dist/antd.min.css";
-import {LiItemContainer} from "../Sidebar/style";
+import Icon from "../Icon";
+import NotificationIcon from "../../img/components/navbar/notification.svg";
+import MessageIcon from "../../img/components/navbar/message.svg";
+
 
 
 function Navbar(){
-    const {isAuthenticated,loginWithRedirect} = useAuth0()
-
+    const {isAuthenticated,loginWithRedirect,logout} = useAuth0()
 
     return (
         <NavbarContainer>
@@ -27,18 +30,31 @@ function Navbar(){
                          enterButton="Search"
                          size="large"/>
             </InputContainer>
-            {
-                !isAuthenticated && (
-                    <LiItemContainer>
-                        <ButtonContainer
-                            onClick={loginWithRedirect}>
-                            Log In
-                        </ButtonContainer>
-                    </LiItemContainer>
-                )
-            }
             <NavbarItemContainer>
-                <AvatarSC>U</AvatarSC>
+                {
+                    !isAuthenticated && (
+                        <LiItemContainer>
+                            <ButtonContainer
+                                onClick={loginWithRedirect}>
+                                Log In
+                            </ButtonContainer>
+                        </LiItemContainer>
+                    )
+                }
+                {
+                    isAuthenticated && (
+                        <LiItemContainer>
+                            <ButtonContainer
+                                onClick={()=> logout()}>
+                                Log Out
+                            </ButtonContainer>
+                            <Icon style={{marginLeft:10}} src={NotificationIcon} width={24} height={24}/>
+                            <Icon style={{marginLeft:10}} src={MessageIcon} width={24} height={24}/>
+                            <AvatarSC>U</AvatarSC>
+                        </LiItemContainer>
+                    )
+                }
+
             </NavbarItemContainer>
         </NavbarContainer>
     );
