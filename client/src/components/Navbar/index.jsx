@@ -16,6 +16,7 @@ import "antd/dist/antd.min.css";
 import Icon from "../Icon";
 import NotificationIcon from "../../img/components/navbar/notification.svg";
 import MessageIcon from "../../img/components/navbar/message.svg";
+import {Row,Col} from "antd";
 
 
 
@@ -48,8 +49,8 @@ function Navbar(){
                                 onClick={()=> logout()}>
                                 Log Out
                             </ButtonContainer>
-                            <Icon style={{marginLeft:10}} src={NotificationIcon} width={24} height={24}/>
-                            <Icon style={{marginLeft:10}} src={MessageIcon} width={24} height={24}/>
+                            <Icon style={{marginLeft:20}} src={NotificationIcon} width={24} height={24}/>
+                            <Icon style={{marginLeft:20}} src={MessageIcon} width={24} height={24}/>
                             <AvatarSC>U</AvatarSC>
                         </LiItemContainer>
                     )

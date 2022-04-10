@@ -10,7 +10,8 @@ export const NavbarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   height:66px;
-  background-color:#323232;
+  background-color:transparent;
+  z-index: 1;
 `;
 
 export const InputSC = styled(Search)`
@@ -46,7 +47,7 @@ export const InputContainer = styled.div`
 `;
 
 export const NavbarItemContainer = styled.div`
-  width: 480px;
+  width: 520px;
   display: flex;
   align-items: center;
     
@@ -56,7 +57,7 @@ export const AvatarSC =styled(Avatar)`
   width: 38px;
   height: 38px;
   font-size:22px;
-  margin-left: 10px;
+  margin-left: 20px;
   color: #f56a00;
   background-color: #fde3cf;
   
@@ -83,6 +84,7 @@ export const ButtonContainer = styled(Button)`
 
 export const LiItemContainer = styled.li`
   display: flex;
+  flex-wrap: wrap;
   justify-content: start;
   align-items: center;
   list-style: none;

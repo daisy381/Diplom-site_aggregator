@@ -13,6 +13,7 @@ import Home from "../Home";
 // import SignIn from "../SignIn";
 // import SignUp from "../SignUp";
 import NotFound from "../NotFound";
+import Profile from "../Profile";
 
 //style
 import {MainContainer} from "./style";
@@ -35,6 +36,7 @@ function Main() {
                         <Route index element={<Home/>}/>
                         <Route path="products" element={<Products/>}/>
                         <Route path="reports" element={<Reports/>}/>
+                        <Route path="profile" element={<Profile/>}/>
                     </Route>;
                     <Route path="/*" element={<NotFound/>} />
                 </Routes>
