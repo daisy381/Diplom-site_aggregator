@@ -4,8 +4,6 @@ import {Card,Divider} from "antd";
 
 //style
 import {
-    ProfileContainer,
-    ProfileContent,
     ImgContainer,
     ProfileContentDesc,
     ImgSC,
@@ -28,23 +26,23 @@ import {
 //images
 import bg from '../../img/pages/bg-profile.jpg'
 import avatar from '../../img/pages/avatar.jpg'
-const { Meta } = Card;
+import {BodyContainer, MainContainer} from "../mainStyle";
 
 
 function Profile() {
     return (
-        <ProfileContainer>
-            <ProfileContent>
-                <ImgContainer>
-                    <ImgSC src={bg}/>
-                </ImgContainer>
+        <MainContainer>
+            <ImgContainer>
+                <ImgSC src={bg}/>
+            </ImgContainer>
+            <BodyContainer>
                 <ProfileContentDesc>
                     <div style={{margin:'10px 0 0 30px'}}>
                         <AvatarContainer>
-                            <AvatarSC src={avatar}/>
-                            <AvatarContainerInfo>
-                                <AvatarContainerName>
-                                    Islam Duisenbek
+                          <AvatarSC src={avatar}/>
+                          <AvatarContainerInfo>
+                             <AvatarContainerName>
+                                 Islam Duisenbek
                                 </AvatarContainerName>
                                 <AvatarContainerPosition>
                                     Web / React developer
@@ -59,7 +57,7 @@ function Profile() {
                                 <ProfileDescInformText>
                                     Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no.
                                     If two equally difficult paths, choose the one more painful in the
-                                    short term (pain avoidance is creating an illusion of equality).
+                                 short term (pain avoidance is creating an illusion of equality).
                                 </ProfileDescInformText>
                                 <Divider/>
                                 <ProfileDescItem>
@@ -115,8 +113,8 @@ function Profile() {
                         </BoughtProducts>
                     </ProfileProducts>
                 </ProfileContentDesc>
-            </ProfileContent>
-        </ProfileContainer>
+            </BodyContainer>
+        </MainContainer>
     );
 }
 

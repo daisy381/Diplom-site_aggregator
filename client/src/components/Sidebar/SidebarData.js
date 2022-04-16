@@ -22,6 +22,16 @@ export const SidebarData = [
         icon: <FaCartPlus/>
     },
     {
+        title:'Sign in',
+        path:'/signin',
+        icon:<IoMdPeople/>
+    },
+    {
+        title:'Sign up',
+        path:'/signup',
+        icon:<IoMdPeople/>
+    },
+    {
         title:'Not Found',
         path:'/*',
         icon:<IoMdPeople/>

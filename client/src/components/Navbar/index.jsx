@@ -16,9 +16,6 @@ import "antd/dist/antd.min.css";
 import Icon from "../Icon";
 import NotificationIcon from "../../img/components/navbar/notification.svg";
 import MessageIcon from "../../img/components/navbar/message.svg";
-import {Row,Col} from "antd";
-
-
 
 function Navbar(){
     const {isAuthenticated,loginWithRedirect,logout} = useAuth0()

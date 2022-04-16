@@ -1,12 +1,9 @@
 //library
 import React from 'react';
-import {Button, Divider, Image, Rate, Tag} from "antd";
+import { Divider, Image, Rate, Tag} from "antd";
 
 //style
 import {
-    HomeContainer,
-    HomeContent,
-    TitleContainer,
     ProductDetails,
     ProductImages,
     ProductMainImage,
@@ -18,9 +15,12 @@ import {
 } from "./style";
 
 import {
+    MainContainer,
     ImgContainer,
     ImgSC,
-    } from "../Profile/style";
+    BodyContainer,
+    TitleContainer
+} from "../mainStyle";
 
 
 //Images
@@ -35,11 +35,11 @@ import Product_4 from '../../img/pages/Product/product_details_4.jpg'
 
 function Home() {
     return (
-        <HomeContainer>
+        <MainContainer>
             <ImgContainer>
                 <ImgSC src={bg}/>
             </ImgContainer>
-            <HomeContent>
+            <BodyContainer>
                 <TitleContainer>Product 1</TitleContainer>
                 <ProductDetails>
                     <ProductImages>
@@ -82,8 +82,8 @@ function Home() {
                 </ProductDetails>
                 <Divider/>
                 <TitleContainer>Other Products</TitleContainer>
-            </HomeContent>
-        </HomeContainer>
+            </BodyContainer>
+        </MainContainer>
     );
 }
 

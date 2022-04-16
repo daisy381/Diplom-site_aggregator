@@ -1,26 +1,6 @@
 import styled from 'styled-components';
 import {Avatar} from "antd";
 
-export const ProfileContainer = styled.div`
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  margin-left: 284px;
-  font-size: 3rem;
-  flex-direction: column;
-  background-color: rgb(240, 242, 245);
-`;
-
-export const ProfileContent = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-`;
-
 export const ImgContainer = styled.div`
   position: relative;
   border-radius: 8px;
@@ -49,12 +29,6 @@ export const ProfileContentDesc = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 50px;
-  transform: translateY(-50%);
-  width: 90%;
-  background-color:#fff ;
-  height: 100%;
-  border-radius: 8px;
 `
 
 export const AvatarSC =styled(Avatar)`

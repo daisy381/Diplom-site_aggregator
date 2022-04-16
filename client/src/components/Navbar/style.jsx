@@ -3,7 +3,6 @@ import {Avatar, Button, Input} from "antd";
 const { Search } = Input;
 
 export const NavbarContainer = styled.div`
-  position:fixed;
   width:100%;
   display:flex;
   margin-left:284px;

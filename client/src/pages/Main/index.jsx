@@ -10,8 +10,8 @@ import Navbar from "../../components/Navbar";
 import Products from "../Products";
 import Reports from "../Reports";
 import Home from "../Home";
-// import SignIn from "../SignIn";
-// import SignUp from "../SignUp";
+import SignIn from "../SignIn";
+import SignUp from "../SignUp";
 import NotFound from "../NotFound";
 import Profile from "../Profile";
 
@@ -37,8 +37,11 @@ function Main() {
                         <Route path="products" element={<Products/>}/>
                         <Route path="reports" element={<Reports/>}/>
                         <Route path="profile" element={<Profile/>}/>
+                        <Route path="profile" element={<Profile/>}/>
                     </Route>;
                     <Route path="/*" element={<NotFound/>} />
+                    <Route path="signup" element={<SignUp/>}/>
+                    <Route path="signin" element={<SignIn/>}/>
                 </Routes>
         </MainContainer>
     );
