@@ -1,7 +1,6 @@
 //libraries
 import React from 'react'
 import {NavLink} from "react-router-dom";
-import {useAuth0} from "@auth0/auth0-react";
 
 //components
 import {SidebarConfigContainer} from "./sidebarConfigContainer";
