@@ -1,6 +1,8 @@
 //libraries
 import React from 'react'
 import {NavLink} from "react-router-dom";
+import { Menu } from 'antd';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 //components
 import {SidebarConfigContainer} from "./sidebarConfigContainer";
@@ -28,6 +30,7 @@ import {IconContext} from "react-icons";
 import LogoIcon from '../../img/components/sidebar/logo.svg';
 import Icon from "../Icon";
 
+const { SubMenu } = Menu;
 
 function Sidebar(){
     const token = getCookie('token');
@@ -42,6 +45,12 @@ function Sidebar(){
                             <LogoTitle>{"Easily"}</LogoTitle>
                         </LinkContainer>
                     </LogoContainer>
+                    <Menu
+                        style={{ width: 256 }}
+                        defaultSelectedKeys={['1']}
+                        defaultOpenKeys={['sub1']}
+                        mode="inline"
+                    >
                     {
                         SidebarData.map((item,index)=> {
                             return (
@@ -55,6 +64,7 @@ function Sidebar(){
                             )
                         })
                     }
+                    </Menu>
                     <HrContainer/>
                     {
                         token && (
