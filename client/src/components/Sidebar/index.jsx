@@ -1,16 +1,17 @@
 //libraries
-import React from 'react'
-import {NavLink} from "react-router-dom";
-import { Menu } from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import React, {useEffect, useState, useCallback} from 'react'
+import {NavLink, useNavigate} from "react-router-dom";
+import {Menu} from "antd";
 
 //components
 import {SidebarConfigContainer} from "./sidebarConfigContainer";
+import Icon from "../Icon";
 
 //data
 import {SidebarData} from "./SidebarData";
 
 // utils
+import { productsServices } from "../../services/products";
 import { getCookie } from '../../helpers/util';
 
 //styles
@@ -28,12 +29,31 @@ import {
 //icons
 import {IconContext} from "react-icons";
 import LogoIcon from '../../img/components/sidebar/logo.svg';
-import Icon from "../Icon";
+import {AiFillHome} from "react-icons/ai";
+import {IoIosPaper} from "react-icons/io";
 
-const { SubMenu } = Menu;
 
 function Sidebar(){
+    const [categories, setCategories] = useState([]);
     const token = getCookie('token');
+    const navigate = useNavigate();
+
+    const handleClick = useCallback(({ key }) => {
+        navigate(key);
+    }, []);
+
+    useEffect(() => {
+        // fetchCategories();
+    }, []);
+
+    async function fetchCategories() {
+        try {
+            const response = await productsServices.getCategories();
+            setCategories(response);
+        } catch (e) {
+            console.error(e.message);
+        }
+    };
 
     return (
         <IconContext.Provider value={{ color: '#000' }}>
@@ -46,24 +66,25 @@ function Sidebar(){
                         </LinkContainer>
                     </LogoContainer>
                     <Menu
-                        style={{ width: 256 }}
                         defaultSelectedKeys={['1']}
-                        defaultOpenKeys={['sub1']}
+                        defaultOpenKeys={['2']}
                         mode="inline"
+                        onClick={handleClick}
                     >
-                    {
-                        SidebarData.map((item,index)=> {
-                            return (
-                                <LiItemContainer key={index}>
-                                    <NavLink to={item.path}
-                                    >
-                                        {item.icon}
-                                        <SpanContainer>{item.title}</SpanContainer>
-                                    </NavLink>
-                                </LiItemContainer>
-                            )
-                        })
-                    }
+
+                        <Menu.Item key="/" icon={<AiFillHome />}>
+                            Main
+                        </Menu.Item>
+                        <Menu.SubMenu key="/products" icon={<AiFillHome />} title="Products" onTitleClick={handleClick}>
+                            {
+                                categories.map((item) => (
+                                    <Menu.Item key={item}>{item}</Menu.Item>
+                                ))
+                            }
+                        </Menu.SubMenu>
+                        <Menu.Item key="/reports" icon={<IoIosPaper />}>
+                            Reports
+                        </Menu.Item>
                     </Menu>
                     <HrContainer/>
                     {
