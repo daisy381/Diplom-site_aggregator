@@ -1,7 +1,7 @@
 //library
 import React from 'react';
 import { Form } from 'antd';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 
 //icons
@@ -13,7 +13,8 @@ import {
 } from '@ant-design/icons';
 import { FaGithub,FaGoogle,FaFacebook} from "react-icons/fa";
 
-
+// utils
+import { getCookie } from "../../helpers/util";
 
 //style
 import {
@@ -35,6 +36,11 @@ import "antd/dist/antd.min.css";
 
 
 function SignUp() {
+    const token = getCookie('token');
+    const navigate = useNavigate();
+
+    if (token) navigate('/');
+
     const onFinish = values => {
         console.log('Received values of form: ', values);
     };

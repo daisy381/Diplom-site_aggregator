@@ -1,7 +1,8 @@
 //library
 import React from "react";
-import {useAuth0} from "@auth0/auth0-react";
-import {useLocation} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
+//utils
+import { deleteCookie, getCookie } from '../../helpers/util';
 
 //styles
 import {
@@ -23,13 +24,15 @@ import NotificationIcon from "../../img/components/navbar/notification.svg";
 import MessageIcon from "../../img/components/navbar/message.svg";
 
 function Navbar(){
-    const {isAuthenticated,loginWithRedirect,logout} = useAuth0()
+    const token = getCookie('token');
     const location = useLocation();
+    const navigate = useNavigate();
 
     return (
         <>
             {
-                location.pathname !== '/' && (
+                location.pathname !== '/'
+                ? (
                     <NavbarContainer>
                         <InputContainer>
                             <InputSC placeholder="Search"
@@ -39,20 +42,19 @@ function Navbar(){
                         </InputContainer>
                         <NavbarItemContainer>
                             {
-                                !isAuthenticated && (
+                                !token
+                                ? (
                                     <LiItemContainer>
                                         <ButtonContainer
-                                            onClick={loginWithRedirect}>
+                                            onClick={() => navigate('/signin')}>
                                             Log In
                                         </ButtonContainer>
                                     </LiItemContainer>
                                 )
-                            }
-                            {
-                                isAuthenticated && (
+                                : (
                                     <LiItemContainer>
                                         <ButtonContainer
-                                            onClick={()=> logout()}>
+                                            onClick={() => deleteCookie('token')}>
                                             Log Out
                                         </ButtonContainer>
                                         <Icon style={{marginLeft:20}} src={NotificationIcon} width={24} height={24}/>
@@ -64,9 +66,7 @@ function Navbar(){
                         </NavbarItemContainer>
                     </NavbarContainer>
                 )
-            }
-            {
-                location.pathname === '/' && (
+                : (
                     <NavbarBeforeLoginContainer>
                         <InputContainer>
                             <InputSC placeholder="Search"
@@ -76,12 +76,11 @@ function Navbar(){
                         </InputContainer>
                         <ButtonContainer
                             type="primary"
-                            onClick={loginWithRedirect}>
+                            onClick={() => navigate('/signin')}>
                             Log In
                         </ButtonContainer>
                     </NavbarBeforeLoginContainer>
-
-                    )
+                )
             }
         </>
 

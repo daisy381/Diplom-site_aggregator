@@ -9,6 +9,9 @@ import {SidebarConfigContainer} from "./sidebarConfigContainer";
 //data
 import {SidebarData} from "./SidebarData";
 
+// utils
+import { getCookie } from '../../helpers/util';
+
 //styles
 import {
     SideContainer,
@@ -28,7 +31,7 @@ import Icon from "../Icon";
 
 
 function Sidebar(){
-    const {isAuthenticated} = useAuth0()
+    const token = getCookie('token');
 
     return (
         <IconContext.Provider value={{ color: '#000' }}>
@@ -55,7 +58,7 @@ function Sidebar(){
                     }
                     <HrContainer/>
                     {
-                        isAuthenticated && (
+                        token && (
                             <SidebarConfigContainer/>
                         )
                     }

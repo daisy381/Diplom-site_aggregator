@@ -5,6 +5,7 @@ import {Route, Routes, Outlet} from "react-router-dom";
 //components
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
+import PrivateRoute from "../../components/PrivateRoute";
 
 //pages
 import Products from "../Products";
@@ -35,10 +36,10 @@ function Main() {
                 <Routes>
                     <Route path="/" element={<Bars/>}>
                         <Route index  element={<Home/>}/>
-                        <Route path="products" element={<Products/>}/>
-                        <Route path="reports" element={<Reports/>}/>
-                        <Route path="profile" element={<Profile/>}/>
-                        <Route path="products_page" element={<ProductPage/>}/>
+                        <Route path="/products" element={<PrivateRoute><Products/></PrivateRoute>}/>
+                        <Route path="/reports" element={<PrivateRoute><Reports/></PrivateRoute>}/>
+                        <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
+                        <Route path="/products_page/:product" element={<PrivateRoute><ProductPage/></PrivateRoute>}/>
 
                     </Route>;
                     <Route path="/*" element={<NotFound/>} />
