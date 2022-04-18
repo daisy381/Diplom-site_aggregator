@@ -2,7 +2,6 @@
 import React ,{useState}from 'react';
 import { Form } from 'antd';
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 
 // utils
 import { getCookie } from "../../helpers/util";
@@ -39,7 +38,6 @@ import "antd/dist/antd.min.css";
 export default function SignIn() {
     const token = getCookie('token');
     const navigate = useNavigate();
-    const { loginWithRedirect } = useAuth0();
 
     if (token) navigate('/');
 
