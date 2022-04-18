@@ -1,5 +1,5 @@
 //library
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {Checkbox, Divider, Rate, Slider, Image, Row, Col, Button} from "antd";
 import {Anchor} from "antd";
 
@@ -33,12 +33,27 @@ import card_1 from "../../img/pages/Product/card-1.jpeg";
 import card_2 from "../../img/pages/Product/card-2.jpeg"
 
 import {AiFillStar} from "react-icons/ai";
+import {productsServices} from "../../services/products";
 
 const { Link } = Anchor;
 
 
 function Products() {
+    const [products, setProducts] = useState([]);
     const [disabled, setDisabled] = useState('false');
+
+    useEffect(() => {
+        // fetchData();
+    }, []);
+
+    async function fetchData() {
+        try {
+            const response = await productsServices.get();
+            setProducts(response);
+        } catch (e) {
+            console.error(e.message);
+        }
+    }
 
     function onChange(checkedValues) {
         console.log('checked = ', checkedValues);
@@ -106,58 +121,38 @@ function Products() {
                         <Divider/>
 
                         <Row>
-                            <Col span={6}>
-                                <Card>
-                                    <Image
-                                        width={300}
-                                        height={300}
-                                        src={card_1}
-                                    />
-                                    <TitleContainer>
-                                        Trainers
-                                    </TitleContainer>
-                                    <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
-                                        <AiFillStar size={20}/>
-                                        <DescriptionContainer>4.6.0</DescriptionContainer>
-                                        <Anchor affix={false}>
-                                            <Link href="#!" title="Basic demo" />
-                                        </Anchor>
-                                    </div>
-                                    <DescriptionCardContainer>
-                                        STARTING MSRP
-                                    </DescriptionCardContainer>
-                                    <PriceContainer>
-                                        Price: $1 123
-                                    </PriceContainer>
-                                    <ButtonContainer>Add to Cart</ButtonContainer>
-                                </Card>
-                            </Col>
-                            <Col span={6} offset={7}>
-                                <Card>
-                                    <Image
-                                        width={300}
-                                        height={300}
-                                        src={card_2}
-                                    />
-                                    <TitleContainer>
-                                        Trainers
-                                    </TitleContainer>
-                                    <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
-                                        <AiFillStar size={20}/>
-                                        <DescriptionContainer>4.6.0</DescriptionContainer>
-                                        <Anchor affix={false}>
-                                            <Link href="#!" title="Basic demo" />
-                                        </Anchor>
-                                    </div>
-                                    <DescriptionCardContainer>
-                                        STARTING MSRP
-                                    </DescriptionCardContainer>
-                                    <PriceContainer>
-                                        Price: $1 123
-                                    </PriceContainer>
-                                    <ButtonContainer>Add to Cart</ButtonContainer>
-                                </Card>
-                            </Col>
+                            {
+                                products.map((item) => (
+                                    <Card>
+                                        <Image
+                                            width={300}
+                                            height={300}
+                                            src={item.img}
+                                        />
+
+                                        <TitleContainer>
+                                            { item.title }
+                                        </TitleContainer>
+
+                                        <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+                                            <AiFillStar size={20}/>
+                                            <DescriptionContainer>{item.description}</DescriptionContainer>
+                                            <Anchor affix={false}>
+                                                <Link href={`/products/${item.id}`} title="Details..." />
+                                            </Anchor>
+                                        </div>
+
+                                        <DescriptionCardContainer>
+                                            STARTING MSRP
+                                        </DescriptionCardContainer>
+                                        <PriceContainer>
+                                            Price: ${item.cost}
+                                        </PriceContainer>
+
+                                        <ButtonContainer>Add to Cart</ButtonContainer>
+                                    </Card>
+                                ))
+                            }
                         </Row>
                     </ProductsContainer>
                 </div>

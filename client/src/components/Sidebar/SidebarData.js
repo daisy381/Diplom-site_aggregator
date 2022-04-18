@@ -21,9 +21,4 @@ export const SidebarData = [
         path:'/reports',
         icon:<IoIosPaper/>
     },
-    {
-        title:'Not Found',
-        path:'/*',
-        icon:<IoMdPeople/>
-    }
 ];
