@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {Button, Checkbox, Input} from "antd";
 
 //icons
-import bg from "../../img/pages/signin.svg"
+import bg from "../../img/pages/SignIn-SignUp/signin.svg"
 
 export const SignInContainer = styled.div`
   display: flex;

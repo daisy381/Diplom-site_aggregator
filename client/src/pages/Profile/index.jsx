@@ -25,7 +25,7 @@ import {
 
 //images
 import bg from '../../img/pages/bg-profile.jpg'
-import avatar from '../../img/pages/avatar.jpg'
+import avatar from '../../img/pages/Profile/avatar.jpg'
 import {BodyContainer, MainContainer} from "../mainStyle";
 
 

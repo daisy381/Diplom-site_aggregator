@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import {Button} from "antd";
 
 export const MainContainer = styled.div`
   position: relative;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   margin-left: 284px;
@@ -39,8 +40,8 @@ export const ImgContainer = styled.div`
 
 export const ImgSC = styled.img`
   border-radius: 8px;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
 `;
 
 export const TitleContainer = styled.div`
@@ -56,3 +57,12 @@ export const TitleContainer = styled.div`
   color: rgb(52, 71, 103);
   font-weight: 600;
 `;
+
+export const ButtonContainer = styled(Button)`
+  background: #feb049 !important;
+  border: none;
+  width: 200px;
+  height: 38px;
+  color: #fff;
+  border-radius:8px;
+`

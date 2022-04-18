@@ -3,9 +3,10 @@ import {Avatar, Button, Input} from "antd";
 const { Search } = Input;
 
 export const NavbarContainer = styled.div`
+  position: fixed;
   width:100%;
   display:flex;
-  margin-left:284px;
+  padding-left:284px;
   align-items: center;
   justify-content: space-between;
   height:66px;
@@ -40,13 +41,13 @@ export const InputSC = styled(Search)`
 
 export const InputContainer = styled.div`
   padding-left: 40px;
-  width: 30%;
+  width: 40%;
   display: flex;
   align-items: center;
 `;
 
 export const NavbarItemContainer = styled.div`
-  width: 520px;
+  padding-right: 20px;
   display: flex;
   align-items: center;
     
@@ -66,19 +67,13 @@ export const AvatarSC =styled(Avatar)`
 `;
 
 export const ButtonContainer = styled(Button)`
-  height: 32px;
-  color: #dbdbdb;
-  border: 1px solid #feb04a;
-  border-radius: 2px;
-  background-color:#323232;
-  padding-right:10px;
-  
-  &:hover{
-    transition: background-color .2s ease,margin .2s ease;
-    background: #feb04a;
-    color: #fff;
-    border: 1px solid #feb04a
-  }
+  width: 123px;
+  height: 50px;
+  color: #fff;
+  background: #feb049 !important;
+  border:none;
+  border-radius:14px;
+  margin: 20px 20px 20px 60px;
 `;
 
 export const LiItemContainer = styled.li`
@@ -88,4 +83,17 @@ export const LiItemContainer = styled.li`
   align-items: center;
   list-style: none;
   height: 60px;
+`;
+
+export const NavbarBeforeLoginContainer = styled.div`
+  display: flex;
+  width:100%;
+  align-items: center;
+  justify-content: end;
+  position: fixed;
+  height:66px;
+  padding-left:284px;
+  margin-top: 20px;
+  background-color:transparent;
+  z-index: 1;
 `;

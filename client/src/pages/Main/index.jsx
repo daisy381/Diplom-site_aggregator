@@ -17,6 +17,7 @@ import Profile from "../Profile";
 
 //style
 import {MainContainer} from "./style";
+import ProductPage from "../ProductPage";
 
 function Main() {
     //for get pages with sidebar and navbar
@@ -33,11 +34,12 @@ function Main() {
             <MainContainer>
                 <Routes>
                     <Route path="/" element={<Bars/>}>
-                        <Route index element={<Home/>}/>
+                        <Route index  element={<Home/>}/>
                         <Route path="products" element={<Products/>}/>
                         <Route path="reports" element={<Reports/>}/>
                         <Route path="profile" element={<Profile/>}/>
-                        <Route path="profile" element={<Profile/>}/>
+                        <Route path="products_page" element={<ProductPage/>}/>
+
                     </Route>;
                     <Route path="/*" element={<NotFound/>} />
                     <Route path="signup" element={<SignUp/>}/>

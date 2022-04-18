@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {Button} from "antd";
 
-import bg from "../../img/pages/404.svg";
+import bg from "../../img/pages/NotFound/404.svg";
 
 export const NotFoundContainer = styled.div`
   display: flex;

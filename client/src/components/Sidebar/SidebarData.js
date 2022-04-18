@@ -7,8 +7,13 @@ import {AiFillHome} from "react-icons/ai";
 
 export const SidebarData = [
     {
-        title:'Home',
+        title:'Main',
         path:'/',
+        icon: <AiFillHome/>
+    },
+    {
+        title:'Products',
+        path:'/products',
         icon: <AiFillHome/>
     },
     {
@@ -17,9 +22,9 @@ export const SidebarData = [
         icon:<IoIosPaper/>
     },
     {
-        title:'Products',
-        path:'/products',
-        icon: <FaCartPlus/>
+        title:'Product Page',
+        path:'/products_page',
+        icon:<IoMdPeople/>
     },
     {
         title:'Sign in',
