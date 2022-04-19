@@ -87,11 +87,11 @@ function Sidebar(){
                         </Menu.Item>
                     </Menu>
                     <HrContainer/>
-                    {
-                        token && (
+                    {/*{*/}
+                    {/*    token && (*/}
                             <SidebarConfigContainer/>
-                        )
-                    }
+                    {/*    )*/}
+                    {/*}*/}
                 </UlContainer>
             </SideContainer>
         </IconContext.Provider>

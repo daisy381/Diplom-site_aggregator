@@ -1,6 +1,7 @@
 //library
-import React from "react";
-import {useLocation, useNavigate} from 'react-router-dom'
+import React, {useState,useEffect} from "react";
+import {useNavigate} from 'react-router-dom'
+
 //utils
 import { deleteCookie, getCookie } from '../../helpers/util';
 
@@ -13,10 +14,10 @@ import {
     AvatarSC,
     NavbarItemContainer,
     LiItemContainer,
-    NavbarBeforeLoginContainer
 } from "./style";
 
 import "antd/dist/antd.min.css";
+import "../../index.css";
 
 //images
 import Icon from "../Icon";
@@ -25,15 +26,29 @@ import MessageIcon from "../../img/components/navbar/message.svg";
 
 function Navbar(){
     const token = getCookie('token');
-    const location = useLocation();
     const navigate = useNavigate();
+
+    const [navbar, setNavbar] = useState('transparent')
+
+    const changeBackground = () => {
+        if (window.scrollY >= 66) {
+            setNavbar('#2B2B39')
+
+        } else {
+            setNavbar('transparent')
+        }
+    }
+
+    useEffect(() => {
+        changeBackground()
+        // adding the event when scroll change background
+        window.addEventListener("scroll", changeBackground)
+    })
 
     return (
         <>
             {
-                location.pathname !== '/'
-                ? (
-                    <NavbarContainer>
+                    <NavbarContainer background={navbar}>
                         <InputContainer>
                             <InputSC placeholder="Search"
                                      allowClear
@@ -65,22 +80,6 @@ function Navbar(){
                             }
                         </NavbarItemContainer>
                     </NavbarContainer>
-                )
-                : (
-                    <NavbarBeforeLoginContainer>
-                        <InputContainer>
-                            <InputSC placeholder="Search"
-                                     allowClear
-                                     enterButton="Search"
-                                     size="large"/>
-                        </InputContainer>
-                        <ButtonContainer
-                            type="primary"
-                            onClick={() => navigate('/signin')}>
-                            Log In
-                        </ButtonContainer>
-                    </NavbarBeforeLoginContainer>
-                )
             }
         </>
 

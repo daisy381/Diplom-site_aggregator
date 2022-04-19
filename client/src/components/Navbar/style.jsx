@@ -4,14 +4,15 @@ const { Search } = Input;
 
 export const NavbarContainer = styled.div`
   position: fixed;
-  width:100%;
+  width: 80%;
   display:flex;
-  padding-left:284px;
+  margin-left:284px;
   align-items: center;
   justify-content: space-between;
+  background-color:${props => props.background};
   height:66px;
-  background-color:transparent;
   z-index: 1;
+  transition: .2s linear;
 `;
 
 export const InputSC = styled(Search)`
@@ -68,12 +69,11 @@ export const AvatarSC =styled(Avatar)`
 
 export const ButtonContainer = styled(Button)`
   width: 123px;
-  height: 50px;
+  height: 34px;
   color: #fff;
   background: #feb049 !important;
   border:none;
   border-radius:14px;
-  margin: 20px 20px 20px 60px;
 `;
 
 export const LiItemContainer = styled.li`
@@ -83,17 +83,4 @@ export const LiItemContainer = styled.li`
   align-items: center;
   list-style: none;
   height: 60px;
-`;
-
-export const NavbarBeforeLoginContainer = styled.div`
-  display: flex;
-  width:100%;
-  align-items: center;
-  justify-content: end;
-  position: fixed;
-  height:66px;
-  padding-left:284px;
-  margin-top: 20px;
-  background-color:transparent;
-  z-index: 1;
 `;
