@@ -10,6 +10,7 @@ import AchievementSection from "./AchievementSection";
 import {
     MainContainer,
 } from "./style";
+import Footer from "../../components/Footer";
 
 function Home() {
     return (
@@ -17,6 +18,7 @@ function Home() {
             <WelcomeSection/>
             <AboutUsSection/>
             <AchievementSection/>
+            <Footer/>
         </MainContainer>
     );
 }
