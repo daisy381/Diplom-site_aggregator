@@ -1,26 +1,47 @@
 //library
-import React from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {Checkbox, Divider, Rate, Slider} from "antd";
 
 //Style
 import {CheckboxTitle,CheckboxContainer,FilterContainer} from './style'
+import {productsServices} from "../../services/products";
+import {capitalizeFirstLetter} from "../../helpers/util";
 
 //Images
 
-function Filter() {
+function Filter({ id, value, onChange }) {
+    const [brands, setBrands] = useState([]);
 
-    function onChange(checkedValues) {
-        console.log('checked = ', checkedValues);
+    const handleChange = useCallback((values) => {
+        onChange(values[0]);
+    }, []);
+
+    useEffect(() => {
+        if (id === null) return;
+
+        fetchData(id);
+    }, [id]);
+
+    async function fetchData(id) {
+        try {
+            const response = await productsServices.getBrands(id);
+            if (!response.data) return;
+            setBrands(response.data);
+        } catch (e) {
+            console.error(e.message);
+        }
     }
+
 
     return (
         <FilterContainer>
             <CheckboxTitle>Brand</CheckboxTitle>
-            <CheckboxContainer onChange={onChange}>
-                <Checkbox value="A">Lenovo</Checkbox>
-                <Checkbox value="B">HP</Checkbox>
-                <Checkbox value="C">ASUS</Checkbox>
-                <Checkbox value="D">Huawei</Checkbox>
+            <CheckboxContainer value={value} onChange={handleChange}>
+                {
+                    brands.map((item) => (
+                        <Checkbox key={item} value={item}>{ capitalizeFirstLetter(item) }</Checkbox>
+                    ))
+                }
             </CheckboxContainer>
             <Divider/>
 

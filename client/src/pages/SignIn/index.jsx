@@ -1,10 +1,11 @@
 //library
-import React ,{useState}from 'react';
-import { Form } from 'antd';
+import React from 'react';
+import { Form, Input } from 'antd';
 import { Link, useNavigate } from "react-router-dom";
 
 // utils
-import { getCookie } from "../../helpers/util";
+import {getCookie, setCookie} from "../../helpers/util";
+import { authenticationService } from "../../services/authentication";
 
 //icons
 import {
@@ -41,6 +42,20 @@ export default function SignIn() {
 
     if (token) navigate('/');
 
+    const handleFinish = async (values) => {
+            const { password, email } = values;
+
+            try {
+                const response = await authenticationService.signin({ email, password });
+                if (!response.token) throw Error(JSON.stringify(response));
+                const date = new Date();
+                setCookie('token', response.token, { expires: date.setDate(date.getDate() + 1) });
+                navigate('/');
+            } catch (e) {
+                console.error(e.message);
+            }
+    }
+
     return (
         <SignInContainer>
             <LoginBGContainer>
@@ -58,34 +73,24 @@ export default function SignIn() {
                         initialValues={{
                             remember: true,
                         }}
-                        // onFinish={handleSubmit}
+                        layout="vertical"
+                        onFinish={handleFinish}
                     >
                         <Form.Item
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input Email!',
-                                },
-                            ]}
+                            label="Your email"
+                            name="email"
+                            rules={[{ required: true, message: 'Please input Email!' }]}
                         >
-                            <PContainer>Your Email</PContainer>
-                            <InputContainer
-                                prefix={<MailOutlined/>}
-                                placeholder="example@compant.com"
-                                // onChange={e => setUserName(e.target.value)}
-                            />
+                            {/*<PContainer>Your Email</PContainer>*/}
+                            <InputContainer prefix={<MailOutlined />} placeholder="example@compant.com" />
                         </Form.Item>
                         <Form.Item
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input Password!',
-                                },
-                            ]}
+                            label="Your password"
+                            name="password"
+                            rules={[{ required: true, message: 'Please input Password!' }]}
                         >
-                            <PContainer>Your Password</PContainer>
+                            {/*<PContainer>Your Password</PContainer>*/}
                             <InputPasswordContainer
-                                // onChange={e => setPassword(e.target.value)}
                                 prefix={<UnlockOutlined />}
                                 placeholder="Password"
                                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}/>

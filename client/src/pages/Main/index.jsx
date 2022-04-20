@@ -47,7 +47,7 @@ function Main() {
                 <Routes>
                     <Route path="/" element={<Bars/>}>
                         <Route index  element={<Home/>}/>
-                        <Route path="/products" element={<PrivateRoute><Products/></PrivateRoute>}/>
+                        <Route path="/products/category/:id" element={<PrivateRoute><Products/></PrivateRoute>}/>
                         <Route path="/reports" element={<PrivateRoute><Reports/></PrivateRoute>}/>
                         <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
                         <Route path="/products_page/:product" element={<PrivateRoute><ProductPage/></PrivateRoute>}/>

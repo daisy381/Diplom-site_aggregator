@@ -44,17 +44,17 @@ function Sidebar(){
     }, []);
 
     useEffect(() => {
-        // fetchCategories();
+        fetchCategories();
     }, []);
 
     async function fetchCategories() {
         try {
             const response = await productsServices.getCategories();
-            setCategories(response);
+            setCategories(response.data);
         } catch (e) {
             console.error(e.message);
         }
-    };
+    }
 
     return (
         <IconContext.Provider value={{ color: '#000' }}>
@@ -76,11 +76,42 @@ function Sidebar(){
                         <MenuContainer.Item key="/" icon={<AiFillHome />}>
                             Main
                         </MenuContainer.Item>
-                        <MenuContainer.SubMenu key="/products" icon={<AiFillHome />} title="Products" onTitleClick={handleClick}>
+                        <MenuContainer.SubMenu
+                            key="/products"
+                            icon={<AiFillHome />}
+                            title="Products"
+                        >
                             {
-                                categories.map((item) => (
-                                    <Menu.Item key={item}>{item}</Menu.Item>
-                                ))
+                                categories.map((item) => {
+                                    if (item?.sub_categories.length) {
+                                        return (
+                                            <MenuContainer.SubMenu
+                                                key={`/products/category/${item.id}`}
+                                                title={item.name}
+                                                onSelect={handleClick}
+                                            >
+                                                {
+                                                    item.sub_categories.map((sub) => (
+                                                        <Menu.Item
+                                                            key={`/products/category/${sub.id}`}
+                                                            onSelect={handleClick}
+                                                        >
+                                                            {sub.name}
+                                                        </Menu.Item>
+                                                    ))
+                                                }
+                                            </MenuContainer.SubMenu>
+                                        )
+                                    }
+                                    return (
+                                        <Menu.Item
+                                            key={`/products/category/${item.id}`}
+                                            onSelect={handleClick}
+                                        >
+                                            {item.name}
+                                        </Menu.Item>
+                                    )
+                                })
                             }
                         </MenuContainer.SubMenu>
                         <MenuContainer.Item key="/reports" icon={<IoIosPaper />}>
@@ -88,11 +119,11 @@ function Sidebar(){
                         </MenuContainer.Item>
                     </MenuContainer>
                     <HrContainer/>
-                    {/*{*/}
-                    {/*    token && (*/}
+                    {
+                        token && (
                             <SidebarConfigContainer/>
-                    {/*    )*/}
-                    {/*}*/}
+                        )
+                    }
                 </UlContainer>
             </SideContainer>
         </IconContext.Provider>

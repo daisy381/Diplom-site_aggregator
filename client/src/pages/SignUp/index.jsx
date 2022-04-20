@@ -1,20 +1,22 @@
 //library
 import React from 'react';
 import { Form } from 'antd';
-import {Link, useNavigate} from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 //icons
 import {
     EyeInvisibleOutlined,
-    EyeTwoTone, LeftOutlined,
+    EyeTwoTone,
+    LeftOutlined,
     MailOutlined,
-    UnlockOutlined
+    UnlockOutlined,
+    UserOutlined,
 } from '@ant-design/icons';
-import { FaGithub,FaGoogle,FaFacebook} from "react-icons/fa";
+import { FaGithub,FaGoogle,FaFacebook } from "react-icons/fa";
 
 // utils
-import { getCookie } from "../../helpers/util";
+import { getCookie, setCookie } from "../../helpers/util";
+import { authenticationService } from "../../services/authentication";
 
 //style
 import {
@@ -41,8 +43,20 @@ function SignUp() {
 
     if (token) navigate('/');
 
-    const onFinish = values => {
-        console.log('Received values of form: ', values);
+    const onFinish = async (values) => {
+        const { confirm, password, email, name } = values;
+
+        if (confirm !== password) return;
+
+        try {
+            const response = await authenticationService.signup({ email, password, name });
+            if (!response.token) throw Error(JSON.stringify(response));
+            const date = new Date();
+            setCookie('token', response.token, { expires: date.setDate(date.getDate() + 1) });
+            navigate('/');
+        } catch (e) {
+            console.error(e.message);
+        }
     };
 
     return (
@@ -59,58 +73,55 @@ function SignUp() {
                     </H3Container>
                     <Form
                         style={{width:"90%"}}
-                        initialValues={{
-                            remember: true,
-                        }}
+                        initialValues={{ remember: true }}
+                        layout="vertical"
                         onFinish={onFinish}
                     >
                         <Form.Item
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input Email!',
-                                },
-                            ]}
+                            label="Your email"
+                            name="email"
+                            rules={[{ required: true, message: 'Please input email!' }]}
                         >
-                            <PContainer>Your Email</PContainer>
-                            <InputContainer
-                                prefix={<MailOutlined/>}
-                                placeholder="example@compant.com" />
+                            {/*<PContainer>Your Email</PContainer>*/}
+                            <InputContainer prefix={<MailOutlined />} placeholder="example@compant.com" />
                         </Form.Item>
                         <Form.Item
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input Password!',
-                                },
-                            ]}
+                            label="Your password"
+                            name="password"
+                            rules={[{ required: true, message: 'Please input password!' }]}
                         >
-                            <PContainer>Your Password</PContainer>
+                            {/*<PContainer>Your Password</PContainer>*/}
                             <InputPasswordContainer
                                 prefix={<UnlockOutlined />}
                                 placeholder="Password"
                                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}/>
                         </Form.Item>
                         <Form.Item
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please confirm Password!',
-                                },
-                            ]}
+                            label="Confirm password"
+                            name="confirm"
+                            rules={[{ required: true, message: 'Please confirm password!' }]}
                         >
-                            <PContainer>Confirm Password</PContainer>
+                            {/*<PContainer>Confirm Password</PContainer>*/}
                             <InputPasswordContainer
                                 prefix={<UnlockOutlined />}
                                 placeholder="Confirm Password"
                                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}/>
+                        </Form.Item>
+                        <Form.Item
+                            label="Your name"
+                            name="name"
+                            rules={[{ required: true, message: 'Please input your name!' }]}
+                        >
+                            {/*<PContainer>Your Name</PContainer>*/}
+                            <InputContainer
+                                prefix={<UserOutlined />}
+                                placeholder="John Doe" />
                         </Form.Item>
                         <Form.Item>
                             <Form.Item name="remember" valuePropName="checked" noStyle>
                                 <CheckboxContainer>I agree to the terms and conditions</CheckboxContainer>
                             </Form.Item>
                         </Form.Item>
-
                         <Form.Item>
                             <ButtonContainer type="primary" htmlType="submit" className="login-form-button">
                                 Sign up
