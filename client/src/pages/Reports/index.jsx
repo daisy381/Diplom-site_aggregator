@@ -5,7 +5,6 @@ import React from 'react';
 import {
     MainContainer,
 } from "../mainStyle";
-import Footer from "../../components/Footer";
 
 //Images
 
