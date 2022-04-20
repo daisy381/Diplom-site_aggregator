@@ -69,3 +69,11 @@ export const ButtonContainer = styled(Button)`
   background-color:#feb04a;
   padding-right:10px;
 `
+
+export const BodyContainer = styled.div`
+  transform: translateY(-20%);
+  width: 90%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 40px 40px 60px;
+`;

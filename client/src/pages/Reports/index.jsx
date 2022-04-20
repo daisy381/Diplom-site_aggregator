@@ -12,7 +12,6 @@ import Footer from "../../components/Footer";
 function Reports() {
     return (
         <MainContainer>
-            <Footer/>
         </MainContainer>
     );
 }

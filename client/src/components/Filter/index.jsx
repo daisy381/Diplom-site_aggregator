@@ -17,10 +17,10 @@ function Filter() {
         <FilterContainer>
             <CheckboxTitle>Brand</CheckboxTitle>
             <CheckboxContainer onChange={onChange}>
-                <Checkbox value="A">All</Checkbox>
-                <Checkbox value="B">Tesla</Checkbox>
-                <Checkbox value="C">BMW</Checkbox>
-                <Checkbox value="D">Ferrari</Checkbox>
+                <Checkbox value="A">Lenovo</Checkbox>
+                <Checkbox value="B">HP</Checkbox>
+                <Checkbox value="C">ASUS</Checkbox>
+                <Checkbox value="D">Huawei</Checkbox>
             </CheckboxContainer>
             <Divider/>
 
@@ -32,21 +32,23 @@ function Filter() {
                 <Checkbox value="D">from 499 999</Checkbox>
             <Divider/>
 
+            <CheckboxTitle>Processor</CheckboxTitle>
+            <CheckboxContainer onChange={onChange}>
+                <Checkbox value="E">Core i3</Checkbox>
+                <Checkbox value="A">Core i5</Checkbox>
+                <Checkbox value="B">Core i7</Checkbox>
+                <Checkbox value="C">Ryzen 5</Checkbox>
+                <Checkbox value="D">Ryzen 7</Checkbox>
+
+            </CheckboxContainer>
+            <Divider/>
+
             <CheckboxTitle>Colour</CheckboxTitle>
             <CheckboxContainer onChange={onChange}>
                 <Checkbox value="A">All</Checkbox>
                 <Checkbox value="E">Black</Checkbox>
                 <Checkbox value="B">Blue</Checkbox>
                 <Checkbox value="C">White</Checkbox>
-            </CheckboxContainer>
-            <Divider/>
-
-            <CheckboxTitle>Year</CheckboxTitle>
-            <CheckboxContainer onChange={onChange}>
-                <Checkbox value="E">All</Checkbox>
-                <Checkbox value="A">2022</Checkbox>
-                <Checkbox value="B">2021</Checkbox>
-                <Checkbox value="C">2020</Checkbox>
             </CheckboxContainer>
             <Divider/>
 

@@ -11,14 +11,14 @@ import {
     ProductDescription,
     ProductDescriptionTitle,
     DescriptionContainer,
-    ButtonContainer
+    ButtonContainer,
+    BodyContainer
 } from "./style";
 
 import {
     MainContainer,
     ImgContainer,
     ImgSC,
-    BodyContainer,
     TitleContainer
 } from "../mainStyle";
 

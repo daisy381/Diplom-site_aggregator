@@ -3,12 +3,10 @@ import {Avatar} from "antd";
 
 export const ImgContainer = styled.div`
   position: relative;
-  border-radius: 8px;
   width: 100%;
-  height: 450px;
+  height: 350px;
   
   &::before{
-    border-radius: 8px;
     content: '';
     position: absolute;
     top: 0;
@@ -17,6 +15,14 @@ export const ImgContainer = styled.div`
     bottom: 0;
     background-color: rgba(33, 47, 61, 0.3);
   }
+`;
+
+export const BodyContainer = styled.div`
+  transform: translateY(-20%);
+  width: 90%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 40px 40px 60px;
 `;
 
 export const ImgSC = styled.img`

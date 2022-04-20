@@ -20,13 +20,16 @@ import {
     TitleContainer,
     DescContainer,
     ProfileProducts,
-    BoughtProducts
+    BoughtProducts,
+    BodyContainer
 } from "./style";
+
+import {MainContainer} from "../mainStyle";
+
 
 //images
 import bg from '../../img/pages/bg-profile.jpg'
 import avatar from '../../img/pages/Profile/avatar.jpg'
-import {BodyContainer, MainContainer} from "../mainStyle";
 
 
 function Profile() {

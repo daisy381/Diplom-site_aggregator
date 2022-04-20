@@ -34,9 +34,9 @@ function Main() {
             <Layout>
                 <Sider width={284}><Sidebar/></Sider>
                 <Layout>
-                    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}><Navbar/></Header>
+                    <Header style={{ position: 'fixed', zIndex: 1, width: '100%', height:'66px'}}><Navbar/></Header>
                     <Content style={{marginTop:66}}><Outlet/></Content>
-                    <Footer><FooterComponent/></Footer>
+                    <Footer style={{padding:0}}><FooterComponent/></Footer>
                 </Layout>
             </Layout>
         </Fragment>

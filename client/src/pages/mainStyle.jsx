@@ -22,7 +22,7 @@ export const ImgContainer = styled.div`
   position: relative;
   border-radius: 8px;
   width: 100%;
-  height: 450px;
+  height: 350px;
   
   &::before{
     border-radius: 8px;
