@@ -24,6 +24,7 @@ import {
     LinkContainer,
     SpanContainer,
     HrContainer,
+    MenuContainer
 } from "./style";
 
 //icons
@@ -65,27 +66,27 @@ function Sidebar(){
                             <LogoTitle>{"Easily"}</LogoTitle>
                         </LinkContainer>
                     </LogoContainer>
-                    <Menu
+                    <MenuContainer
                         defaultSelectedKeys={['1']}
                         defaultOpenKeys={['2']}
                         mode="inline"
                         onClick={handleClick}
                     >
 
-                        <Menu.Item key="/" icon={<AiFillHome />}>
+                        <MenuContainer.Item key="/" icon={<AiFillHome />}>
                             Main
-                        </Menu.Item>
-                        <Menu.SubMenu key="/products" icon={<AiFillHome />} title="Products" onTitleClick={handleClick}>
+                        </MenuContainer.Item>
+                        <MenuContainer.SubMenu key="/products" icon={<AiFillHome />} title="Products" onTitleClick={handleClick}>
                             {
                                 categories.map((item) => (
                                     <Menu.Item key={item}>{item}</Menu.Item>
                                 ))
                             }
-                        </Menu.SubMenu>
-                        <Menu.Item key="/reports" icon={<IoIosPaper />}>
+                        </MenuContainer.SubMenu>
+                        <MenuContainer.Item key="/reports" icon={<IoIosPaper />}>
                             Reports
-                        </Menu.Item>
-                    </Menu>
+                        </MenuContainer.Item>
+                    </MenuContainer>
                     <HrContainer/>
                     {/*{*/}
                     {/*    token && (*/}

@@ -34,6 +34,7 @@ import card_2 from "../../img/pages/Product/card-2.jpeg"
 
 import {AiFillStar} from "react-icons/ai";
 import {productsServices} from "../../services/products";
+import Footer from "../../components/Footer";
 
 const { Link } = Anchor;
 
@@ -157,6 +158,7 @@ function Products() {
                     </ProductsContainer>
                 </div>
             </BodyContainer>
+            <Footer/>
 
         </MainContainer>
     );

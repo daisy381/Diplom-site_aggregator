@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {Menu} from 'antd';
 
 export const LogoContainer = styled.li`
   background-color: #feb049;
@@ -98,4 +99,30 @@ export const H5Container = styled.h5`
 export const HrContainer =  styled.hr`
   margin: 40px auto auto auto;
   width: 80%;
+`;
+
+export const MenuContainer = styled(Menu)`
+  padding: 8px 12px 8px 16px;
+  
+  & li{
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+
+  & li:hover{
+    background-color: #f4dba2 !important;
+    color:#000 !important;
+  }
+
+  & li:active{
+    background-color: #f4dba2 !important;
+  }
+  
+  & .ant-menu:not(.ant-menu-horizontal),
+  .ant-menu-item-selected{
+    background-color: #f4dba2 !important;
+    color:#000 !important;
+  }
 `;
