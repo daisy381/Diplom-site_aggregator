@@ -7,6 +7,14 @@ export const ProductsContainer = styled.div`
   margin-left: 40px;
 `;
 
+export const TitleContainer = styled.div`
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #323232;
+  font-size: 30px;
+  margin-bottom: 15px;
+`;
+
 export const ConfigBar = styled.div`
   width: 100%;
   height: 84px;

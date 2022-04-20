@@ -24,6 +24,14 @@ function Filter() {
             </CheckboxContainer>
             <Divider/>
 
+            <CheckboxTitle>Price</CheckboxTitle>
+                <Checkbox value="A">50 0000 - 99 999</Checkbox>
+                <Checkbox value="B">100 000 - 149 999</Checkbox>
+                <Checkbox value="C">150 000 - 199 999</Checkbox>
+                <Checkbox value="D">200 000 - 499 999</Checkbox>
+                <Checkbox value="D">from 499 999</Checkbox>
+            <Divider/>
+
             <CheckboxTitle>Colour</CheckboxTitle>
             <CheckboxContainer onChange={onChange}>
                 <Checkbox value="A">All</Checkbox>
@@ -31,10 +39,6 @@ function Filter() {
                 <Checkbox value="B">Blue</Checkbox>
                 <Checkbox value="C">White</Checkbox>
             </CheckboxContainer>
-            <Divider/>
-
-            <CheckboxTitle>Price</CheckboxTitle>
-            <Slider defaultValue={30}/>
             <Divider/>
 
             <CheckboxTitle>Year</CheckboxTitle>

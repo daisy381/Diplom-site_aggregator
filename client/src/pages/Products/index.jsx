@@ -10,10 +10,10 @@ import Filter from "../../components/Filter";
 import {
     MainContainer,
     BodyContainer,
-    TitleContainer
 } from "../mainStyle";
 
 import {
+    TitleContainer,
     ProductsContainer,
     ConfigBar,
     InputSC,
@@ -51,9 +51,8 @@ function Products() {
     }
 
     return (
-        <MainContainer>
             <BodyContainer>
-                <TitleContainer>Products</TitleContainer>
+                <TitleContainer>Products > Category</TitleContainer>
                 <div style={{display:'flex',flexDirection:'row'}}>
                     <Filter/>
                     <ProductsContainer>
@@ -103,7 +102,6 @@ function Products() {
                     </ProductsContainer>
                 </div>
             </BodyContainer>
-        </MainContainer>
     );
 }
 

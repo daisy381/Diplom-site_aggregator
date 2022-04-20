@@ -6,7 +6,6 @@ export const MainContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  margin-left: 284px;
   font-size: 3rem;
   flex-direction: column;
   background-color: rgb(240, 242, 245);
@@ -16,7 +15,7 @@ export const BodyContainer = styled.div`
   width: 100%;
   background-color: rgb(240, 242, 245);
   border-radius: 8px;
-  padding: 60px 20px;
+  padding: 40px 40px 60px;
 `;
 
 export const ImgContainer = styled.div`

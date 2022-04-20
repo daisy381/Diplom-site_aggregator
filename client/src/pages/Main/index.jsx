@@ -35,7 +35,7 @@ function Main() {
                 <Sider width={284}><Sidebar/></Sider>
                 <Layout>
                     <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}><Navbar/></Header>
-                    <Content><Outlet/></Content>
+                    <Content style={{marginTop:66}}><Outlet/></Content>
                     <Footer><FooterComponent/></Footer>
                 </Layout>
             </Layout>
