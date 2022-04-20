@@ -28,27 +28,10 @@ function Navbar(){
     const token = getCookie('token');
     const navigate = useNavigate();
 
-    const [navbar, setNavbar] = useState('transparent')
-
-    const changeBackground = () => {
-        if (window.scrollY >= 66) {
-            setNavbar('#2B2B39')
-
-        } else {
-            setNavbar('transparent')
-        }
-    }
-
-    useEffect(() => {
-        changeBackground()
-        // adding the event when scroll change background
-        window.addEventListener("scroll", changeBackground)
-    })
-
     return (
         <>
             {
-                    <NavbarContainer background={navbar}>
+                    <NavbarContainer>
                         <InputContainer>
                             <InputSC placeholder="Search"
                                      allowClear

@@ -3,16 +3,10 @@ import {Avatar, Button, Input} from "antd";
 const { Search } = Input;
 
 export const NavbarContainer = styled.div`
-  position: fixed;
-  width: 80%;
+  position: relative;
   display:flex;
-  margin-left:284px;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  background-color:${props => props.background};
-  height:66px;
-  z-index: 1;
-  transition: .2s linear;
 `;
 
 export const InputSC = styled(Search)`
@@ -48,10 +42,8 @@ export const InputContainer = styled.div`
 `;
 
 export const NavbarItemContainer = styled.div`
-  padding-right: 20px;
   display: flex;
   align-items: center;
-    
 `;
 
 export const AvatarSC =styled(Avatar)`
@@ -77,9 +69,10 @@ export const ButtonContainer = styled(Button)`
 `;
 
 export const LiItemContainer = styled.li`
+  width: 560px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: end;
   align-items: center;
   list-style: none;
   height: 60px;

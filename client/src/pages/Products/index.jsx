@@ -1,21 +1,19 @@
 //library
 import React, { useState, useEffect } from 'react';
-import {Checkbox, Divider, Rate, Slider, Image, Row, Col, Button} from "antd";
+import { Divider, Image, Row} from "antd";
 import {Anchor} from "antd";
+
+//components
+import Filter from "../../components/Filter";
 
 //Style
 import {
     MainContainer,
-    ImgContainer,
-    ImgSC,
     BodyContainer,
     TitleContainer
 } from "../mainStyle";
 
 import {
-    Filter,
-    CheckboxContainer,
-    CheckboxTitle,
     ProductsContainer,
     ConfigBar,
     InputSC,
@@ -28,13 +26,9 @@ import {
 } from './style'
 
 //Images
-import bg from "../../img/pages/bg-profile.jpg";
-import card_1 from "../../img/pages/Product/card-1.jpeg";
-import card_2 from "../../img/pages/Product/card-2.jpeg"
 
 import {AiFillStar} from "react-icons/ai";
 import {productsServices} from "../../services/products";
-import Footer from "../../components/Footer";
 
 const { Link } = Anchor;
 
@@ -56,61 +50,12 @@ function Products() {
         }
     }
 
-    function onChange(checkedValues) {
-        console.log('checked = ', checkedValues);
-    }
-
     return (
         <MainContainer>
-            <ImgContainer>
-                <ImgSC src={bg}/>
-            </ImgContainer>
             <BodyContainer>
                 <TitleContainer>Products</TitleContainer>
                 <div style={{display:'flex',flexDirection:'row'}}>
-                    <Filter>
-                        <CheckboxTitle>Brand</CheckboxTitle>
-                        <CheckboxContainer onChange={onChange}>
-                            <Checkbox value="A">All</Checkbox>
-                            <Checkbox value="B">Tesla</Checkbox>
-                            <Checkbox value="C">BMW</Checkbox>
-                            <Checkbox value="D">Ferrari</Checkbox>
-                        </CheckboxContainer>
-                        <Divider/>
-
-                        <CheckboxTitle>Colour</CheckboxTitle>
-                        <CheckboxContainer onChange={onChange}>
-                            <Checkbox value="A">All</Checkbox>
-                            <Checkbox value="E">Black</Checkbox>
-                            <Checkbox value="B">Blue</Checkbox>
-                            <Checkbox value="C">White</Checkbox>
-                        </CheckboxContainer>
-                        <Divider/>
-
-                        <CheckboxTitle>Price</CheckboxTitle>
-                        <Slider defaultValue={30}/>
-                        <Divider/>
-
-                        <CheckboxTitle>Year</CheckboxTitle>
-                        <CheckboxContainer onChange={onChange}>
-                            <Checkbox value="E">All</Checkbox>
-                            <Checkbox value="A">2022</Checkbox>
-                            <Checkbox value="B">2021</Checkbox>
-                            <Checkbox value="C">2020</Checkbox>
-                        </CheckboxContainer>
-                        <Divider/>
-
-                        <CheckboxTitle>Rate</CheckboxTitle>
-                        <CheckboxContainer onChange={onChange}>
-                            <Checkbox value="G">All</Checkbox>
-                            <Checkbox value="A"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={1}/></Checkbox>
-                            <Checkbox value="B"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={2}/></Checkbox>
-                            <Checkbox value="C"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={3}/></Checkbox>
-                            <Checkbox value="D"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={4}/></Checkbox>
-                            <Checkbox value="E"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={5}/></Checkbox>
-                        </CheckboxContainer>
-                        <Divider/>
-                    </Filter>
+                    <Filter/>
                     <ProductsContainer>
                         <ConfigBar>
                             <InputContainer>
@@ -158,8 +103,6 @@ function Products() {
                     </ProductsContainer>
                 </div>
             </BodyContainer>
-            <Footer/>
-
         </MainContainer>
     );
 }

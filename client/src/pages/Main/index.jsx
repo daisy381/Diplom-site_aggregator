@@ -1,11 +1,14 @@
 //library
 import React ,{Fragment}from 'react';
 import {Route, Routes, Outlet} from "react-router-dom";
+import { Layout } from 'antd';
+
 
 //components
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
 import PrivateRoute from "../../components/PrivateRoute";
+import FooterComponent from "../../components/Footer";
 
 //pages
 import Products from "../Products";
@@ -20,14 +23,22 @@ import Profile from "../Profile";
 import {MainContainer} from "./style";
 import ProductPage from "../ProductPage";
 
+const { Header, Footer, Sider, Content } = Layout;
+
+
 function Main() {
     //for get pages with sidebar and navbar
     //TODO. connect to validation
     const Bars = ()=> {
         return <Fragment>
-            <Sidebar/>
-            <Navbar/>
-            <Outlet/>
+            <Layout>
+                <Sider width={284}><Sidebar/></Sider>
+                <Layout>
+                    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}><Navbar/></Header>
+                    <Content><Outlet/></Content>
+                    <Footer><FooterComponent/></Footer>
+                </Layout>
+            </Layout>
         </Fragment>
     }
 

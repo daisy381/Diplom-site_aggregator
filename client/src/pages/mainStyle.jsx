@@ -13,11 +13,10 @@ export const MainContainer = styled.div`
 `;
 
 export const BodyContainer = styled.div`
-  transform: translateY(-30%);
-  width: 90%;
-  background-color:#fff ;
+  width: 100%;
+  background-color: rgb(240, 242, 245);
   border-radius: 8px;
-  padding: 30px 20px;
+  padding: 60px 20px;
 `;
 
 export const ImgContainer = styled.div`

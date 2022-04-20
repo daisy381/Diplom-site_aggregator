@@ -1,35 +1,6 @@
 import styled from "styled-components";
-import {Button, Checkbox, Input} from "antd";
+import {Button, Input} from "antd";
 const { Search } = Input;
-
-
-export const Filter = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  background-color: rgb(240, 242, 245);
-  border-radius: 8px;
-  padding:20px;
-`;
-
-export const CheckboxContainer = styled(Checkbox.Group)`
-  display: flex;
-  flex-direction: column;
-`
-
-export const CheckboxTitle = styled.p`
-  margin: 0 0 15px 0;
-  font-size: 1rem;
-  line-height: 1;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  letter-spacing: 0;
-  opacity: 1;
-  text-transform: none;
-  vertical-align: unset;
-  text-decoration: none;
-  color: rgb(52, 71, 103);
-  font-weight: 600;
-`;
 
 export const ProductsContainer = styled.div`
   width: 80%;
@@ -41,7 +12,7 @@ export const ConfigBar = styled.div`
   height: 84px;
   padding: 23px 23px;
   border-radius: 8px;
-  background-color: rgb(240, 242, 245);
+  background-color: #fff;
 `;
 
 export const InputSC = styled(Search)`
@@ -83,7 +54,7 @@ export const Card = styled.div`
   height: 540px;
   flex-direction: column;
   border-radius: 8px;
-  background-color: rgb(240, 242, 245);
+  background-color: #fff;
 `;
 
 export const DescriptionContainer = styled.p`
