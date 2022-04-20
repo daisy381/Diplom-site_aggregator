@@ -30,6 +30,7 @@ import Product_1 from '../../img/pages/Product/product_details_1.jpg'
 import Product_2 from '../../img/pages/Product/product_details_2.jpg'
 import Product_3 from '../../img/pages/Product/product_details_3.jpg'
 import Product_4 from '../../img/pages/Product/product_details_4.jpg'
+import Tabs from "../../components/Tabs";
 
 
 
@@ -81,7 +82,7 @@ function ProductPage() {
                     </ProductDescription>
                 </ProductDetails>
                 <Divider/>
-                <TitleContainer>Other Products</TitleContainer>
+                <Tabs/>
             </BodyContainer>
         </MainContainer>
     );
