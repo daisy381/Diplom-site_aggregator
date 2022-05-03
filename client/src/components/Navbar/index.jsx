@@ -28,6 +28,10 @@ function Navbar(){
     const token = getCookie('token');
     const navigate = useNavigate();
 
+    const logout = ()=>{
+        deleteCookie('token')
+        navigate('/signin')
+    }
     return (
         <>
             {
@@ -52,7 +56,7 @@ function Navbar(){
                                 : (
                                     <LiItemContainer>
                                         <ButtonContainer
-                                            onClick={() => deleteCookie('token')}>
+                                            onClick={() => logout()}>
                                             Log Out
                                         </ButtonContainer>
                                         <Icon style={{marginLeft:20}} src={NotificationIcon} width={24} height={24}/>

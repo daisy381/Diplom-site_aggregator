@@ -59,7 +59,7 @@ export const Card = styled.div`
   display:flex;
   padding:20px;
   width: 345px;
-  height: 540px;
+  height: 560px;
   flex-direction: column;
   border-radius: 8px;
   background-color: #fff;

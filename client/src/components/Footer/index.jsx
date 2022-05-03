@@ -13,7 +13,7 @@ import Icon from "../Icon";
 import {LinkContainer, LogoTitle} from "../Sidebar/style";
 
 //Images
-import LogoIcon from "../../img/easily_logo.svg";
+import LogoIcon from "../../img/easily.svg";
 import twitter from '../../img/components/footer/Twitter.svg';
 import instagram from '../../img/components/footer/instagram.svg';
 import facebook from '../../img/components/footer/facebook.svg';

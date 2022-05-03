@@ -1,7 +1,7 @@
 //library
 import React, {useState, useEffect, useCallback} from 'react';
 import { useLocation } from "react-router-dom";
-import { Divider, Image, Row} from "antd";
+import { Divider, Image, Row,Col} from "antd";
 import { Anchor } from "antd";
 
 //components
@@ -108,34 +108,37 @@ function Products() {
                         <Row>
                             {
                                 products.data.map((item) => (
-                                    <Card key={item.id}>
-                                        <Image
-                                            width={300}
-                                            height={300}
-                                            src={item.image_url}
-                                        />
+                                    <Col style={{marginRight:40,marginBottom:20}} key={item.id}>
+                                        <Card key={item.id}>
+                                            <Image
+                                                width={300}
+                                                height={300}
+                                                src={item.image_url}
+                                            />
 
-                                        <TitleContainer style={{ fontSize: "15px" }}>
-                                            { item.name }
-                                        </TitleContainer>
+                                            <TitleContainer style={{ fontSize: "15px" }}>
+                                                { item.name }
+                                            </TitleContainer>
 
-                                        <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
-                                            <AiFillStar size={20}/>
-                                            <DescriptionContainer>{item.description}</DescriptionContainer>
-                                            <Anchor affix={false}>
-                                                <Link href={`/products/${item.id}`} title="Details..." />
-                                            </Anchor>
-                                        </div>
+                                            <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+                                                <AiFillStar size={20}/>
+                                                <DescriptionContainer>{item.description}</DescriptionContainer>
+                                                <Anchor affix={false}>
+                                                    <Link href={`/products/${item.id}`} title="Details..." />
+                                                </Anchor>
+                                            </div>
 
-                                        <DescriptionCardContainer>
-                                            STARTING MSRP
-                                        </DescriptionCardContainer>
-                                        <PriceContainer>
-                                            Price: ₸{item.price}
-                                        </PriceContainer>
+                                            <DescriptionCardContainer>
+                                                STARTING MSRP
+                                            </DescriptionCardContainer>
+                                            <PriceContainer>
+                                                Price: ₸{item.price}
+                                            </PriceContainer>
 
-                                        <ButtonContainer>Add to Cart</ButtonContainer>
-                                    </Card>
+                                            <ButtonContainer>Add to Cart</ButtonContainer>
+                                        </Card>
+
+                                    </Col>
                                 ))
                             }
                         </Row>

@@ -25,10 +25,10 @@ import {
 
 //Images
 import bg from "../../img/pages/bg-profile.jpg";
-import Product_main from '../../img/pages/Product/product_main.jpg'
-import Product_1 from '../../img/pages/Product/product_details_1.jpg'
-import Product_2 from '../../img/pages/Product/product_details_2.jpg'
-import Product_3 from '../../img/pages/Product/product_details_3.jpg'
+import Product_main from '../../img/pages/Product/8abf9647-3083-11eb-a237-005056b6dbd7.jpeg'
+import Product_1 from '../../img/pages/Product/9926ea98-3b43-11ea-a22d-005056b6dbd7.jpeg'
+import Product_2 from '../../img/pages/Product/8abf9647-3083-11eb-a237-005056b6dbd7.jpeg'
+import Product_3 from '../../img/pages/Product/e9a13308-993c-11ec-a244-005056b6dbd7.jpeg'
 import Product_4 from '../../img/pages/Product/product_details_4.jpg'
 import Tabs from "../../components/Tabs";
 
@@ -45,7 +45,7 @@ function ProductPage() {
                 <ProductDetails>
                     <ProductImages>
                         <ProductMainImage>
-                            <Image width={430} height={285}  style={{borderRadius:8}} src={Product_main}/>
+                            <Image width={430} height={385}  style={{borderRadius:8}} src={Product_main}/>
                         </ProductMainImage>
 
                         <ProductOtherImages>
@@ -57,7 +57,7 @@ function ProductPage() {
                     </ProductImages>
                     <ProductDescription>
                         <ProductDescriptionTitle>
-                            Minimal Bar Stool
+                            Apple MacBook Pro 16
                         </ProductDescriptionTitle>
                         <Rate allowHalf defaultValue={2.5} />
                         <Divider/>

@@ -50,7 +50,7 @@ function Main() {
                         <Route path="/products/category/:id" element={<PrivateRoute><Products/></PrivateRoute>}/>
                         <Route path="/reports" element={<PrivateRoute><Reports/></PrivateRoute>}/>
                         <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
-                        <Route path="/products_page/:product" element={<PrivateRoute><ProductPage/></PrivateRoute>}/>
+                        <Route path="/products/:product" element={<PrivateRoute><ProductPage/></PrivateRoute>}/>
 
                     </Route>;
                     <Route path="/*" element={<NotFound/>} />

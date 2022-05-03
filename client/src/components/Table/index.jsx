@@ -1,6 +1,6 @@
 //library
 import React from 'react';
-import { Table as TableAnt, Tag, Space } from 'antd';
+import { Table as TableAnt, Tag } from 'antd';
 import {ButtonContainer} from "../Navbar/style";
 
 //Style

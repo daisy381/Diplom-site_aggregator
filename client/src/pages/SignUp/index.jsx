@@ -82,7 +82,6 @@ function SignUp() {
                             name="email"
                             rules={[{ required: true, message: 'Please input email!' }]}
                         >
-                            {/*<PContainer>Your Email</PContainer>*/}
                             <InputContainer prefix={<MailOutlined />} placeholder="example@compant.com" />
                         </Form.Item>
                         <Form.Item
@@ -90,7 +89,6 @@ function SignUp() {
                             name="password"
                             rules={[{ required: true, message: 'Please input password!' }]}
                         >
-                            {/*<PContainer>Your Password</PContainer>*/}
                             <InputPasswordContainer
                                 prefix={<UnlockOutlined />}
                                 placeholder="Password"
@@ -101,7 +99,6 @@ function SignUp() {
                             name="confirm"
                             rules={[{ required: true, message: 'Please confirm password!' }]}
                         >
-                            {/*<PContainer>Confirm Password</PContainer>*/}
                             <InputPasswordContainer
                                 prefix={<UnlockOutlined />}
                                 placeholder="Confirm Password"
@@ -112,7 +109,6 @@ function SignUp() {
                             name="name"
                             rules={[{ required: true, message: 'Please input your name!' }]}
                         >
-                            {/*<PContainer>Your Name</PContainer>*/}
                             <InputContainer
                                 prefix={<UserOutlined />}
                                 placeholder="John Doe" />

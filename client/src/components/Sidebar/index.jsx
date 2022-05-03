@@ -29,7 +29,7 @@ import {
 
 //icons
 import {IconContext} from "react-icons";
-import LogoIcon from '../../img/components/sidebar/logo.svg';
+import LogoIcon from '../../img/easily3.svg';
 import {AiFillHome} from "react-icons/ai";
 import {IoIosPaper} from "react-icons/io";
 
@@ -62,8 +62,7 @@ function Sidebar(){
                 <UlContainer>
                     <LogoContainer>
                         <LinkContainer to="#">
-                            <Icon path={LogoIcon} width={40} height={40}/>
-                            <LogoTitle>{"Easily"}</LogoTitle>
+                            <Icon path={LogoIcon} width={300} height={300}/>
                         </LinkContainer>
                     </LogoContainer>
                     <MenuContainer
