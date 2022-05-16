@@ -1,0 +1,272 @@
+[
+  {
+    "id": 228,
+    "name": "Персональный компьютер ACER Predator PO3-630 (DG.E2CMC.003)/Core i5 11400F 2.6 Ghz/16/2TB+SSD512/RTX3070/8/Dos",
+    "price": 829900,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/e2/e254754b-8b10-11ec-a244-005056b6dbd7.jpeg",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 229,
+    "name": "Персональный компьютер ACER Aspire TC-1660 (DG.BGZMC.001)/Core i3 10105 3.7 Ghz/8/1TB/GTX1650/4/Dos",
+    "price": 314990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/9c/9cf4a7d9-111e-11ec-a23f-005056b6dbd7.png",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 230,
+    "name": "Монитор SAMSUNG LS24R350FHIXCI",
+    "price": 80990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/99/9926ea98-3b43-11ea-a22d-005056b6dbd7.jpeg",
+    "brand": "Samsung",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 231,
+    "name": "Монитор HP Z7Y57AA OMEN 25 FHD/TN/1ms/144Hz",
+    "price": 104990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/69/6922d135-db91-11ea-a230-005056b6dbd7.jpeg",
+    "brand": "Hp",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 232,
+    "name": "Персональный компьютер ASUS ROG Strix GA15-R5600X0040/AMD Ryzen 5 5600X 3.7 Ghz/16/SSD512/RTX3060Ti/8/Dos",
+    "price": 849970,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/fd/fd213106-58a4-11ec-a241-005056b6dbd7.jpeg",
+    "brand": "Asus",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 233,
+    "name": "Персональный компьютер ACER Predator PO6-605s (DG.E1KMC.004)/Core i9 9900K 3.6 Ghz/32/SSD1TB/RTX2080/8/Linux",
+    "price": 1199900,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/19/198532af-a620-11ea-a22e-005056b6dbd7.jpeg",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 234,
+    "name": "Персональный компьютер ACER Aspire TC-1660 (DG.BGZMC.004)/Core i5 11400F 2.6 Ghz/8/SSD256/GTX1650/4/Dos",
+    "price": 359990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/9c/9cf4a7e3-111e-11ec-a23f-005056b6dbd7.png",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 235,
+    "name": "Персональный компьютер APPLE Mac Mini (MXNF2)/Core i3 8100 3.6 Ghz/8/SSD256/MacOS",
+    "price": 399970,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/a6/a6b809df-39ce-11eb-a238-005056b6dbd7.jpeg",
+    "brand": "Apple",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 236,
+    "name": "Персональный компьютер ACER Aspire TC-1660 (DG.BGZMC.005)/Core i5 11400F 2.6 Ghz/16/1TB+SSD256/GTX1660/6/Dos",
+    "price": 479990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/9c/9cf4a7e9-111e-11ec-a23f-005056b6dbd7.png",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 237,
+    "name": "Монитор SAMSUNG LC49RG90SSIXCI",
+    "price": 644990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/e8/e87b8a4a-998b-11ea-a22d-005056b6dbd7.jpeg",
+    "brand": "Samsung",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 238,
+    "name": "Монитор SAMSUNG Odyssey LF24G33TFWIXCI 24 FHD/VA/1ms/144Hz",
+    "price": 116990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/1c/1ccc6ac8-ba0d-11eb-a23e-005056b6dbd7.png",
+    "brand": "Samsung",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 239,
+    "name": "Монитор SAMSUNG LC24F396FHIXCI",
+    "price": 80990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/0e/0ea454eb-1582-11e9-a21c-005056b6dbd7.jpeg",
+    "brand": "Samsung",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 240,
+    "name": "Монитор 2E Gaming G2919B 29 UWHD/VA/4ms/100Hz",
+    "price": 129990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/2a/2a9e92d7-1450-11ec-a23f-005056b6dbd7.png",
+    "brand": "2e",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 241,
+    "name": "Персональный компьютер ACER Predator PO9-600 (DG.E16MC.005)/Core i9 9900K 3.6 Ghz/64/3TB+SSD1TB/RTX2080Ti/11/Win10",
+    "price": 1699930,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/bd/bd514a9d-1a8e-11eb-a235-005056b6dbd7.jpeg",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 242,
+    "name": "Персональный компьютер ACER Predator PO9-600 (DG.E16MC.004)/Core i7 9700K 3.6 Ghz/64/3TB+SSD1TB/RTX2080Ti/11/Win10",
+    "price": 1699970,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/bd/bd514a9c-1a8e-11eb-a235-005056b6dbd7.jpeg",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 243,
+    "name": "Моноблок мультимедийный APPLE iMac 24 2021 Blue (Z12W000BV) 23.5 Retina 4.5K/Apple M1 8-Core 3.2 Ghz/16/SSD256/M1 8-Core/MacOS",
+    "price": 1129990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/d1/d124a3c3-4394-11ec-a240-005056b6dbd7.jpeg",
+    "brand": "Apple",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 244,
+    "name": "Монитор XIAOMI Mi 1C (BHR4510GL) 23.8 FHD/IPS/6ms/60Hz",
+    "price": 89990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/16/162856fb-7a3b-11eb-a23a-005056b6dbd7.png",
+    "brand": "Xiaomi",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 245,
+    "name": "Моноблок мультимедийный HP ProOne 400 G6 (23G70EA)/19.5 FHD/Core i3 10100T 3.0 Ghz/8/SSD256/Win10Pro",
+    "price": 339970,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/35/35aec9f0-1469-11ec-a23f-005056b6dbd7.png",
+    "brand": "Hp",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 246,
+    "name": "Монитор ACER ED270RP (UM.HE0EE.P01) 27 FHD/VA/5ms/165Hz",
+    "price": 129990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/f4/f4ac1f9a-7295-11ec-a243-005056b6dbd7.jpeg",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 247,
+    "name": "Монитор LG 27UL500-W 27 UHD/IPS/5ms/60Hz",
+    "price": 99990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/8d/8d78527c-8d17-11eb-a23a-005056b6dbd7.png",
+    "brand": "Lg",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 248,
+    "name": "Монитор ACER Nitro VG270bmiix (UM.HV0EE.001) 27 FHD/IPS/1ms/75Hz",
+    "price": 114990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/46/4670b31d-429e-11ec-a240-005056b6dbd7.jpeg",
+    "brand": "",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 249,
+    "name": "Монитор LG 29WP500-B 29 FHD/IPS/5ms/75Hz",
+    "price": 134990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/59/59d9a3de-c351-11eb-a23e-005056b6dbd7.png",
+    "brand": "Lg",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 250,
+    "name": "Кронштейн для мониторов BRATECK LDT13-C012 (13-27\") Настольный",
+    "price": 17990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/e9/e9013488-6699-11eb-a23a-005056b6dbd7.jpeg",
+    "brand": "Brateck",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 251,
+    "name": "Монитор ACER Nitro QG241Ybii (UM.QQ1EE.001) 23.8 FHD/VA/1ms/75Hz",
+    "price": 94990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/f4/f4ac1f80-7295-11ec-a243-005056b6dbd7.jpeg",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 252,
+    "name": "Моноблок мультимедийный APPLE iMac Pro 2020 A1862 (MHLV3) 27 5K/Xeon W-2150B 3.0 Ghz/32/SSD1TB/Radeon Pro Vega 56/8/MacOS",
+    "price": 2499970,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/e8/e801d8c4-3c6e-11ec-a240-005056b6dbd7.jpeg",
+    "brand": "Apple",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 253,
+    "name": "Персональный компьютер  (92604LC)/X-Game Thor/Core i3 10100F 3.6 GHz/8/1TB+SSD120/GTX1650/4/Dos",
+    "price": 329900,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/e2/e2547551-8b10-11ec-a244-005056b6dbd7.jpeg",
+    "brand": "",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 254,
+    "name": "Монитор LG 27MP400-B 27 FHD/IPS/5ms/75Hz",
+    "price": 98990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/35/352df8d9-0ba3-11ec-a23f-005056b6dbd7.png",
+    "brand": "Lg",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 255,
+    "name": "Персональный компьютер  (92378LC)/Shard Aerocool/Core i3 10100F 3.6 GHz/8/1TB+SSD120/GTX1650/4/Dos",
+    "price": 299970,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/99/99fde961-5748-11ec-a241-005056b6dbd7.jpeg",
+    "brand": "",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 256,
+    "name": "Монитор 2E Gaming G3420B 34 QHD/VA/1ms/144Hz",
+    "price": 209990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/2a/2a9e92e1-1450-11ec-a23f-005056b6dbd7.png",
+    "brand": "2e",
+    "category_id": 4,
+    "description": null
+  },
+  {
+    "id": 257,
+    "name": "Монитор ACER Nitro VG242YPbmiipx (UM.QV2EE.P01) 23.8 FHD/IPS/1ms/165Hz",
+    "price": 119990,
+    "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/46/4670b315-429e-11ec-a240-005056b6dbd7.jpeg",
+    "brand": "Acer",
+    "category_id": 4,
+    "description": null
+  }
+]
