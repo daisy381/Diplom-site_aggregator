@@ -13,6 +13,7 @@ import category from '../../data/categories.json';
 //helpers
 import {usePagination} from "../../hooks";
 import {productsServices} from "../../services/products";
+
 import cn from "classnames";
 
 
@@ -20,13 +21,31 @@ export const Products = () => {
 
     const [activeItem, setActiveItem] = useState(0)
     const [brand, setBrand] = useState('');
-    const [disabled, setDisabled] = useState('false');
     const [categories, setCategories] = useState([]);
     const [products,setProducts] = useState([]);
     const [categoryId, setCategoryId] = useState(3);
 
     const {currentItems, pageNumbers, paginate, currentPage} = usePagination(9, products)
 
+    useEffect(async () => {
+        fetchData(categoryId)
+    }, [categoryId]);
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
+
+    useEffect( async () =>{
+        let response = null;
+
+        if(brand === ''){
+            fetchData(categoryId)
+            return;
+        } else {
+            response = await productsServices.getByBrands(categoryId, brand);
+            setProducts(response)
+        }
+    },[brand])
 
     const onClickActiveItem = (id,index) => () => {
         setActiveItem(index)
@@ -38,14 +57,6 @@ export const Products = () => {
 
     const handleSearch = useCallback((e) => {
         setBrand('');
-    }, []);
-
-    useEffect(async () => {
-        fetchData(categoryId)
-    }, [categoryId]);
-
-    useEffect(() => {
-        fetchCategories();
     }, []);
 
     async function fetchData(_id) {
@@ -81,7 +92,7 @@ export const Products = () => {
               }
           </div>
           <div className="flex space-x-[50px]">
-              <FilterBlock />
+              <FilterBlock id={categoryId} value={brand} onChange={handleChangeBrand}/>
               {
                   currentItems.length === 0 ?
                       <div className='flex flex-1 justify-center'>

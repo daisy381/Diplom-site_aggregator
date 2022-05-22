@@ -28,7 +28,7 @@ function getBrands(id) {
 }
 
 function getByBrands(id, brand) {
-    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&brand=${brand}`, {
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&limit=100&brand=${brand}`, {
         headers: {
             'Content-type': 'application/json',
         },

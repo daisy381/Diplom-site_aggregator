@@ -1,23 +1,30 @@
 //library
-import {useState,useEffect} from "react";
+import {useState,useEffect,useCallback} from "react";
 
 //components
-import {Input,InputRange} from "../../shared/components/Input";
-import {IconSelector} from "../../shared/IconSelector";
-import {Checkbox} from "antd";
+import {Checkbox, Divider,Rate} from "antd";
 
 //helpers
 import {productsServices} from "../../services/products";
 import {capitalizeFirstLetter} from "../../helpers/util";
 
-export const FilterBlock = () => {
+export const FilterBlock = ({id,value,onChange}) => {
+
   const [brands, setBrands] = useState([]);
 
+  useEffect( async ()=>{
+    fetchData(id)
+  },[id])
+
+  const handleChange = useCallback((values) => {
+    onChange(values[0]);
+  }, []);
 
   async function fetchData(id) {
     try {
       const response = await productsServices.getBrands(id);
       if (!response.data) return;
+
       setBrands(response.data);
     } catch (e) {
       console.error(e.message);
@@ -25,108 +32,79 @@ export const FilterBlock = () => {
   }
 
   return (
-    <div className="bg-white shadow-md p-[50px]">
-      <h1 className="text-[30px] font-medium">Filters</h1>
-      <div className="mt-10">
-        <h1 className="text-[20px] mb-5">Brands</h1>
-        <Checkbox.Group>
-
-        </Checkbox.Group>
-
-      </div>
-
-      <div className="flex flex-col space-y-2">
-        <InputRange />
-        <div className="flex-col items-center space-x-2 pt-5">
-          <input
-            className="max-w-[100px] p-2 rounded border border-gray-400  placeholder:text-gray-400"
-            type="text"
-            placeholder="От"
-          />
-          <input
-            className="max-w-[100px] p-2 rounded border border-gray-400  placeholder:text-gray-400"
-            type="text"
-            placeholder="До"
-          />
+      <div className="bg-white shadow-md p-[50px]">
+        <h1 className="text-[30px] font-medium">Filters</h1>
+        <div className="mt-10">
+          <h1 className="text-[20px] mb-5">Brands</h1>
+          <Checkbox.Group
+              className="flex flex-col"
+              onChange={handleChange}
+              value = {value}
+          >
+            {
+              brands.map((item) => (
+                  <Checkbox key={item} value={item}>{ capitalizeFirstLetter(item) }</Checkbox>
+              ))
+            }
+          </Checkbox.Group>
         </div>
-      </div>
+        <Divider/>
 
-      <div className="mt-10">
-        <h1 className="text-[20px] mb-5">Текст</h1>
-        <div className="space-y-2">
-          {new Array(5).fill(null).map((_, index) => (
-            <Input type="checkbox" title="Текст" id={index} key={index} />
-          ))}
-        </div>
-      </div>
+        <div className="flex flex-col space-y-2">
+          <h1 className="text-[20px] mb-5">Price</h1>
+          <Checkbox.Group
+              className="flex flex-col"
+              onChange={onChange}
+              value = {value}
+          >
+            <Checkbox value="A">50 0000 - 99 999</Checkbox>
+            <Checkbox value="B">100 000 - 149 999</Checkbox>
+            <Checkbox value="C">150 000 - 199 999</Checkbox>
+            <Checkbox value="D">200 000 - 499 999</Checkbox>
+            <Checkbox value="D">from 499 999</Checkbox>
+          </Checkbox.Group>
 
-      <div className="mt-10">
-        <h1 className="text-[20px] mb-5">Текст</h1>
-        <div className="space-y-2">
-          {new Array(5).fill(null).map((_, index) => (
-            <Input type="checkbox" title="Текст" id={index} key={index} />
-          ))}
         </div>
-      </div>
 
-      <div className="mt-10">
-        <h1 className="text-[20px] mb-5">Текст</h1>
-        <div className="space-y-2">
-          {new Array(5).fill(null).map((_, index) => (
-            <Input type="checkbox" title="Текст" id={index} key={index} />
-          ))}
+        <div className="mt-10">
+          <h1 className="text-[20px] mb-5">Processor</h1>
+          <Checkbox.Group
+              className="flex flex-col"
+              onChange={onChange}>
+            <Checkbox value="E">Core i3</Checkbox>
+            <Checkbox value="A">Core i5</Checkbox>
+            <Checkbox value="B">Core i7</Checkbox>
+            <Checkbox value="C">Ryzen 5</Checkbox>
+            <Checkbox value="D">Ryzen 7</Checkbox>
+
+          </Checkbox.Group>
         </div>
-      </div>
-      <div className="mt-10">
-        <h1 className="text-[20px] mb-5">Текст</h1>
-          <div className="flex flex-col gap-y-3">
-            <Input type='checkbox' id='1-star' title={
-              <div className='flex space-x-2'>
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gray' />
-                <IconSelector id='star' fill='gray' />
-                <IconSelector id='star' fill='gray' />
-                <IconSelector id='star' fill='gray' />
-              </div>
-            }/>
-            <Input type='checkbox' id='2-star' title={
-              <div className='flex space-x-2'>
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gray' />
-                <IconSelector id='star' fill='gray' />
-                <IconSelector id='star' fill='gray' />
-              </div>
-            }/>
-            <Input type='checkbox' id='3-star' title={
-              <div className='flex space-x-2'>
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gray' />
-                <IconSelector id='star' fill='gray' />
-              </div>
-            }/>
-            <Input type='checkbox' id='4-star' title={
-              <div className='flex space-x-2'>
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gray' />
-              </div>
-            }/>
-            <Input type='checkbox' id='5-star' title={
-              <div className='flex space-x-2'>
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-                <IconSelector id='star' fill='gold' />
-              </div>
-            }/>
-          </div>
-      </div>
+
+        <div className="mt-10">
+          <h1 className="text-[20px] mb-5">Color</h1>
+          <Checkbox.Group
+              className="flex flex-col"
+              onChange={onChange}>
+            <Checkbox value="A">All</Checkbox>
+            <Checkbox value="E">Black</Checkbox>
+            <Checkbox value="B">Blue</Checkbox>
+            <Checkbox value="C">White</Checkbox>
+          </Checkbox.Group>
+        </div>
+
+        <div className="mt-10">
+          <h1 className="text-[20px] mb-5">Rating</h1>
+          <Checkbox.Group
+              className="flex flex-col"
+              onChange={onChange}>
+            <Checkbox value="G">All</Checkbox>
+            <Checkbox value="A"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={1}/></Checkbox>
+            <Checkbox value="B"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={2}/></Checkbox>
+            <Checkbox value="C"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={3}/></Checkbox>
+            <Checkbox value="D"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={4}/></Checkbox>
+            <Checkbox value="E"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={5}/></Checkbox>
+          </Checkbox.Group>
+        </div>
     </div>
   );
 };
