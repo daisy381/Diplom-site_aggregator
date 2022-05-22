@@ -14,6 +14,7 @@ import category from '../../data/categories.json';
 import {usePagination} from "../../hooks";
 import {productsServices} from "../../services/products";
 import cn from "classnames";
+import {useAppContext} from "../../context";
 
 
 export const Products = () => {
@@ -24,7 +25,6 @@ export const Products = () => {
     const [categories, setCategories] = useState([]);
     const [products,setProducts] = useState([]);
     const [categoryId, setCategoryId] = useState(3);
-
     const {currentItems, pageNumbers, paginate, currentPage} = usePagination(9, products)
 
 

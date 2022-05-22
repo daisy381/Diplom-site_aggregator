@@ -6,7 +6,7 @@ export const usePagination = (limit = 9, items = []) => {
 
   const lastItemIndex = currentPage * itemsPerPage
   const firsItemIndex = lastItemIndex - itemsPerPage
-  const roundedLastPageNumber = Math.ceil(items.length / itemsPerPage)
+  const roundedLastPageNumber = Math.ceil(items.data?.length / itemsPerPage)
   const currentItems = items.data?.slice(firsItemIndex, lastItemIndex)  || [];
 
   const paginate = (page) => {

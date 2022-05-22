@@ -19,6 +19,9 @@ import {Products} from "../Products";
 import {Orders} from "../Orders";
 import {Reports} from "../Reports";
 import {Profile} from "../Profile";
+import {Feedback} from "../Feedback";
+import {PickupPoint} from "../PickupPoint";
+import {Help} from "../Help";
 
 //style
 
@@ -32,10 +35,13 @@ function Main() {
                         <Route path="/products" element={<PrivateRoute><Products/></PrivateRoute>}/>
                         <Route path="/reports" element={<PrivateRoute><Reports/></PrivateRoute>}/>
                         <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
-                        <Route path="/products/:product" element={<PrivateRoute><ProductInfo/></PrivateRoute>}/>
+                        <Route path="/product/:productId" element={<PrivateRoute><ProductInfo/></PrivateRoute>}/>
                         <Route path="/cart" element={<PrivateRoute><Cart/></PrivateRoute>}/>
                         <Route path="/favorites" element={<PrivateRoute><Favorites/></PrivateRoute>}/>
                         <Route path="/orders" element={<PrivateRoute><Orders/></PrivateRoute>}/>
+                        <Route path='/feedback' element={<Feedback/>}/>
+                        <Route path='/pickup-point' element={<PickupPoint/>}/>
+                        <Route path='/help' element={<Help/>}/>
                     </Route>;
                     <Route path="/*" element={<NotFound/>} />
                     <Route path="signup" element={<SignUp/>}/>

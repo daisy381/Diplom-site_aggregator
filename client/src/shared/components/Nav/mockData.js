@@ -20,13 +20,20 @@ export const menuList = [{
   iconId: "team"
 }, {
   id: 5,
-  title: "Сообщения",
-  link: '/messages',
-  iconId: "message"
-}, {
+  title: "Пункт выдачи",
+  link: '/pickup-point',
+  iconId: "location"
+},
+  {
+    id: 7,
+    title: "Помощь",
+    link: '/help',
+    iconId: "message"
+  },
+  {
   id: 6,
-  title: "Поддержка",
-  link: '/support',
+  title: "Обратняя связь",
+  link: '/feedback',
   iconId: "support"
 }]
 
