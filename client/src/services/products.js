@@ -10,7 +10,7 @@ function getCategories() {
 }
 
 function getCategory(id) {
-    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&limit=10`, {
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&limit=100`, {
         headers: {
             'Content-type': 'application/json',
         },
@@ -28,7 +28,7 @@ function getBrands(id) {
 }
 
 function getByBrands(id, brand) {
-    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&limit=10&brand=${brand}`, {
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&brand=${brand}`, {
         headers: {
             'Content-type': 'application/json',
         },

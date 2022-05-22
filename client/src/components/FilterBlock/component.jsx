@@ -1,18 +1,38 @@
+//library
+import {useState,useEffect} from "react";
+
+//components
 import {Input,InputRange} from "../../shared/components/Input";
-import { useState } from 'react';
 import {IconSelector} from "../../shared/IconSelector";
+import {Checkbox} from "antd";
+
+//helpers
+import {productsServices} from "../../services/products";
+import {capitalizeFirstLetter} from "../../helpers/util";
+
 export const FilterBlock = () => {
+  const [brands, setBrands] = useState([]);
+
+
+  async function fetchData(id) {
+    try {
+      const response = await productsServices.getBrands(id);
+      if (!response.data) return;
+      setBrands(response.data);
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
 
   return (
     <div className="bg-white shadow-md p-[50px]">
-      <h1 className="text-[30px] font-medium">Фильтры</h1>
+      <h1 className="text-[30px] font-medium">Filters</h1>
       <div className="mt-10">
-        <h1 className="text-[20px] mb-5">Текст</h1>
-        <div className="space-y-2">
-          {new Array(5).fill(null).map((_, index) => (
-            <Input type="checkbox" title="Текст" id={index} key={index} />
-          ))}
-        </div>
+        <h1 className="text-[20px] mb-5">Brands</h1>
+        <Checkbox.Group>
+
+        </Checkbox.Group>
+
       </div>
 
       <div className="flex flex-col space-y-2">

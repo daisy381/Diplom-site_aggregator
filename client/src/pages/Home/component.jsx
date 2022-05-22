@@ -7,8 +7,8 @@ import {IconSelector} from "../../shared/IconSelector";
 import {SmallCard} from "../../components/Card";
 
 //data
-import products from '../../main_product.json';
-import members from '../../members.json';
+import products from '../../data/main_product.json';
+import members from '../../data/members.json';
 
 
 export const Home = () => {

@@ -1,10 +1,10 @@
 //library
 import React ,{Fragment}from 'react';
 import {Route, Routes} from "react-router-dom";
-import { Layout } from 'antd';
 
 //components
 import PrivateRoute from "../../components/PrivateRoute";
+import {AppProvider} from "../../context";
 
 //pages
 import {MainLayout} from "../../components/Layout/MainLayout";
@@ -22,13 +22,10 @@ import {Profile} from "../Profile";
 
 //style
 
-const { Header, Footer, Sider, Content } = Layout;
-
-
 function Main() {
 
     return (
-            <Fragment>
+            <AppProvider>
                 <Routes>
                     <Route path='/' element={<MainLayout/>}>
                         <Route index  element={<Home/>}/>
@@ -44,7 +41,7 @@ function Main() {
                     <Route path="signup" element={<SignUp/>}/>
                     <Route path="signin" element={<SignIn/>}/>
                 </Routes>
-        </Fragment>
+        </AppProvider>
     );
 }
 
