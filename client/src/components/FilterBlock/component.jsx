@@ -8,7 +8,7 @@ import {Checkbox, Divider,Rate} from "antd";
 import {productsServices} from "../../services/products";
 import {capitalizeFirstLetter} from "../../helpers/util";
 
-export const FilterBlock = ({id,value,onChange}) => {
+export const FilterBlock = ({id,value,onChange,rateChange}) => {
 
   const [brands, setBrands] = useState([]);
 
@@ -19,6 +19,13 @@ export const FilterBlock = ({id,value,onChange}) => {
   const handleChange = useCallback((values) => {
     onChange(values[0]);
   }, []);
+
+  const ratingChange = useCallback((values) => {
+      rateChange(values);
+  },[rateChange])
+
+  const onChange1 = () => {
+  }
 
   async function fetchData(id) {
     try {
@@ -54,7 +61,7 @@ export const FilterBlock = ({id,value,onChange}) => {
           <h1 className="text-[20px] mb-5">Price</h1>
           <Checkbox.Group
               className="flex flex-col"
-              onChange={onChange}
+              onChange={onChange1}
               value = {value}
           >
             <Checkbox value="A">50 0000 - 99 999</Checkbox>
@@ -63,14 +70,29 @@ export const FilterBlock = ({id,value,onChange}) => {
             <Checkbox value="D">200 000 - 499 999</Checkbox>
             <Checkbox value="D">from 499 999</Checkbox>
           </Checkbox.Group>
-
         </div>
+        <Divider/>
+
+        <div className="mt-10">
+          <h1 className="text-[20px] mb-5">Rating</h1>
+          <Checkbox.Group
+              className="flex flex-col"
+              onChange={ratingChange}
+          >
+              <Checkbox value="1"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={1}/></Checkbox>
+              <Checkbox value="2"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={2}/></Checkbox>
+              <Checkbox value="3"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={3}/></Checkbox>
+              <Checkbox value="4"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={4}/></Checkbox>
+              <Checkbox value="5"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={5}/></Checkbox>
+          </Checkbox.Group>
+        </div>
+        <Divider/>
 
         <div className="mt-10">
           <h1 className="text-[20px] mb-5">Processor</h1>
           <Checkbox.Group
               className="flex flex-col"
-              onChange={onChange}>
+              onChange={onChange1}>
             <Checkbox value="E">Core i3</Checkbox>
             <Checkbox value="A">Core i5</Checkbox>
             <Checkbox value="B">Core i7</Checkbox>
@@ -79,30 +101,17 @@ export const FilterBlock = ({id,value,onChange}) => {
 
           </Checkbox.Group>
         </div>
+        <Divider/>
 
         <div className="mt-10">
           <h1 className="text-[20px] mb-5">Color</h1>
           <Checkbox.Group
               className="flex flex-col"
-              onChange={onChange}>
+              onChange={onChange1}>
             <Checkbox value="A">All</Checkbox>
             <Checkbox value="E">Black</Checkbox>
             <Checkbox value="B">Blue</Checkbox>
             <Checkbox value="C">White</Checkbox>
-          </Checkbox.Group>
-        </div>
-
-        <div className="mt-10">
-          <h1 className="text-[20px] mb-5">Rating</h1>
-          <Checkbox.Group
-              className="flex flex-col"
-              onChange={onChange}>
-            <Checkbox value="G">All</Checkbox>
-            <Checkbox value="A"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={1}/></Checkbox>
-            <Checkbox value="B"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={2}/></Checkbox>
-            <Checkbox value="C"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={3}/></Checkbox>
-            <Checkbox value="D"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={4}/></Checkbox>
-            <Checkbox value="E"><Rate style={{display:'inherit',fontSize:14}} disabled defaultValue={5}/></Checkbox>
           </Checkbox.Group>
         </div>
     </div>

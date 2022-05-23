@@ -1,6 +1,5 @@
 //library
 import {useState,useCallback,useEffect} from "react";
-import { useLocation } from "react-router-dom";
 
 //components
 import { FilterBlock } from '../../components/FilterBlock';
@@ -13,6 +12,7 @@ import category from '../../data/categories.json';
 //helpers
 import {usePagination} from "../../hooks";
 import {productsServices} from "../../services/products";
+import {valueDefined} from "../../helpers/util";
 
 import cn from "classnames";
 
@@ -37,15 +37,25 @@ export const Products = () => {
 
     useEffect( async () =>{
         let response = null;
-
-        if(brand === ''){
+        if(!valueDefined(brand)){
             fetchData(categoryId)
             return;
         } else {
             response = await productsServices.getByBrands(categoryId, brand);
-            setProducts(response)
+            let result =  addRating(response);
+            setProducts(result)
+            localStorage.setItem('products', JSON.stringify(result.data))
         }
-    },[brand])
+    },[brand]);
+
+    const addRating = (item) => {
+        const data = item.data?.map(elem => {
+            const rating = elem['rating'] = Math.floor(2 + Math.random() * (5 + 1 - 2));
+            return {...elem , rating};
+        });
+
+        return {...item,data};
+    }
 
     const onClickActiveItem = (id,index) => () => {
         setActiveItem(index)
@@ -55,14 +65,27 @@ export const Products = () => {
         setBrand(checked);
     }, []);
 
+    const handleChangeRate = useCallback( (checked) => {
+        if(!valueDefined(checked)){
+            fetchData(categoryId)
+            return;
+        }
+        const result = products.data?.filter( (item)=> {
+            return checked.filter(elem => +elem === item.rating) > 0;
+        });
+        setProducts({data:result});
+    },[products]);
+
     const handleSearch = useCallback((e) => {
         setBrand('');
     }, []);
 
     async function fetchData(_id) {
         try {
-            const response = await productsServices.getCategory(_id);
-            setProducts(response);
+            let response = await productsServices.getCategory(_id);
+            const result = addRating(response);
+            setProducts(result);
+            localStorage.setItem('products', JSON.stringify(result.data))
         } catch (e) {
             console.error(e.message);
         }
@@ -92,7 +115,12 @@ export const Products = () => {
               }
           </div>
           <div className="flex space-x-[50px]">
-              <FilterBlock id={categoryId} value={brand} onChange={handleChangeBrand}/>
+              <FilterBlock
+                  id={categoryId}
+                  value={brand}
+                  onChange={handleChangeBrand}
+                  rateChange={handleChangeRate}
+              />
               {
                   currentItems.length === 0 ?
                       <div className='flex flex-1 justify-center'>
@@ -102,7 +130,7 @@ export const Products = () => {
                       <div className="flex-1 grid grid-cols-3 gap-10 items-start">
                           {
                               currentItems.map((item) => (
-                                  <BaseCard {...item} key={item.id}/>
+                                  <BaseCard {...item} key={item.id} products={products}/>
                               ))
                           }
                           <div className='col-start-2 self-end'>

@@ -32,7 +32,7 @@ function Main() {
                         <Route path="/products" element={<PrivateRoute><Products/></PrivateRoute>}/>
                         <Route path="/reports" element={<PrivateRoute><Reports/></PrivateRoute>}/>
                         <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
-                        <Route path="/products/:product" element={<PrivateRoute><ProductInfo/></PrivateRoute>}/>
+                        <Route path="/product/:productId" element={<PrivateRoute><ProductInfo/></PrivateRoute>}/>
                         <Route path="/cart" element={<PrivateRoute><Cart/></PrivateRoute>}/>
                         <Route path="/favorites" element={<PrivateRoute><Favorites/></PrivateRoute>}/>
                         <Route path="/orders" element={<PrivateRoute><Orders/></PrivateRoute>}/>

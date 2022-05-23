@@ -21,7 +21,7 @@ export const MainLayout = ({children}) => {
         </main>
         <footer className='bg-primary h-52 w-full flex justify-center py-5 mb-0'>
           <div className='flex text-white items-center justify-around w-full'>
-            <h1 className='title '>EASILY</h1>
+            <h1 className='title text-white'>EASILY</h1>
             <ul className='grid grid-cols-3 gap-x-28'>
               <li>Домой</li>
               <li>Команда</li>

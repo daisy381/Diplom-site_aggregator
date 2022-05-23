@@ -17,7 +17,7 @@ export const Header = ({isMainPage = false, isShow, toggleNavMenu}) => {
           <div className={hamburgerLine}></div>
         </button>
         <Link to='/'>
-          <h1 className='title'>EASILY</h1>
+          <h1 className='title text-white'>EASILY</h1>
         </Link>
       </div>
       <HeaderNav/>

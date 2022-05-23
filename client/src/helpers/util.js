@@ -37,3 +37,11 @@ export const deleteCookie = (name) => {
 export function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export const valueDefined = (value) => {
+    if (Array.isArray(value)){
+        return value.length>0;
+    }else{
+        return ((value!==undefined)&&(value!=="")&&(value!==null));
+    }
+};
