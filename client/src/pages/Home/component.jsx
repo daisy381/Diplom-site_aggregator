@@ -66,13 +66,12 @@ export const Home = () => {
               )
             }
             <div className='flex justify-center my-5'>
-              <span className='inline-flex group justify-center items-center cursor-pointer bg-secondary rounded-full w-[90px] h-[90px]'>
-                <button
-                    onClick={()=> setProductsActive(!productsActive)}
+              <button onClick={()=> setProductsActive(prev => !prev)} className='inline-flex group justify-center items-center cursor-pointer bg-secondary rounded-full w-[90px] h-[90px]'>
+                <span
                     className='group-hover:translate-y-3 transition-transform'>
-                  <IconSelector id='chevron-down'/>
-                </button>
-              </span>
+                  <IconSelector id='chevron-down' className={productsActive ? 'rotate-180' : 'rotate-0'}/>
+                </span>
+              </button>
             </div>
           </div>
         </section>
