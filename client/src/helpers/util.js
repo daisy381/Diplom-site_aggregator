@@ -45,3 +45,8 @@ export const valueDefined = (value) => {
         return ((value!==undefined)&&(value!=="")&&(value!==null));
     }
 };
+
+export const addSpaces = (value) =>{
+    if(!valueDefined(value)) return;
+    return value.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')
+}
