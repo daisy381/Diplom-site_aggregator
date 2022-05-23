@@ -1,15 +1,18 @@
-import {Header} from "../../../shared/components/Header";
+//library
 import React, {useState} from "react";
 import {useLocation, Outlet} from "react-router-dom";
+
+//components
+import {Header} from "../../../shared/components/Header";
 import {Nav} from "../../../shared/components/Nav";
 import {Modal} from "../../../shared/components/Modal";
 
 
-
-
 export const MainLayout = ({children}) => {
+
   const [isShow, setShow] = useState(false)
   const { pathname } = useLocation()
+
   const toggleNavMenu = () => setShow(prev => !prev)
 
   return (

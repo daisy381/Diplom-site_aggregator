@@ -1,9 +1,13 @@
-import {IconSelector} from "../../shared/IconSelector";
-import {Input} from "../../shared/components/Input";
+//components
+import {Divider} from "antd";
 import {Button} from "../../shared/components/Button";
+
+//helpers
 import {useCart,useFavorite} from "../../hooks";
+import {addSpaces} from "../../helpers/util";
 
 export const CartCard = ({image_url, price, name, id}) => {
+
   const {toggleFavorite, isFavorite} = useFavorite({image_url, id, price, name})
   const {deleteItemOnCart} = useCart({image_url, price, name, id})
 
@@ -15,25 +19,24 @@ export const CartCard = ({image_url, price, name, id}) => {
             <div className='flex gap-x-10'>
               <div className='flex flex-col'>
                 <span className='font-medium text-[20px]'>{name}</span>
-                <span className='text-[15px] opacity-50'>Текст</span>
+                <span className='text-[15px] opacity-50'>цвет черный, 2.5 кг</span>
               </div>
-              <div className='flex gap-x-5'>
-                <IconSelector id='star' fill='gold'/>
-                <span>3.5</span>
-              </div>
-            </div>
-            <div className='px-2'>
-              {isFavorite ? <IconSelector onClick={toggleFavorite} className='cursor-pointer' id='heart-filled'/> : <IconSelector onClick={toggleFavorite} className='cursor-pointer' id='heart' fill='black'/>}
-
             </div>
           </div>
           <div className='flex flex-col gap-y-2'>
-            <span className='text-[15px] opacity-50'>Цена</span>
-            <span className='font-medium text-[20px]'>{price}</span>
+            <span className='font-bold text-2xl' style={{color:'#282828'}}>{addSpaces(price)}</span>
           </div>
           <div className='flex'>
-            <Input type='checkbox'/>
-            <Button onClick={deleteItemOnCart} className='max-w-[100px] hover:text-red-400 transition-colors'>Удалить</Button>
+            <Button onClick={deleteItemOnCart} className='max-w-[100px] hover:text-red-400 transition-colors text-blue-600/75 text-left'>Удалить</Button>
+            <Divider type="vertical" style={{ height: "80%" , border:'1px solid grey', marginTop:5}}/>
+            {
+              isFavorite ?
+                  <Button onClick={toggleFavorite}
+                          className='max-w-[100px] hover:text-red-400 transition-colors text-blue-600/75'>В избранное</Button>
+                  :
+                  <Button onClick={toggleFavorite}
+                          className='max-w-[200px] hover:text-red-400 transition-colors text-blue-600/75'>Удалить из избранных</Button>
+            }
           </div>
         </div>
       </div>

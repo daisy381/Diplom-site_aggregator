@@ -47,9 +47,4 @@ export const menuButtomList = [{
   title: "Аккаунт",
   link: "/profile",
   iconId: "user"
-}, {
-  id: 9,
-  title: "Выход из системы",
-  link: "/logout",
-  iconId: "logout"
 }]

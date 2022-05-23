@@ -23,8 +23,6 @@ import {Feedback} from "../Feedback";
 import {PickupPoint} from "../PickupPoint";
 import {Help} from "../Help";
 
-//style
-
 function Main() {
 
     return (
@@ -39,9 +37,9 @@ function Main() {
                         <Route path="/cart" element={<PrivateRoute><Cart/></PrivateRoute>}/>
                         <Route path="/favorites" element={<PrivateRoute><Favorites/></PrivateRoute>}/>
                         <Route path="/orders" element={<PrivateRoute><Orders/></PrivateRoute>}/>
-                        <Route path='/feedback' element={<Feedback/>}/>
-                        <Route path='/pickup-point' element={<PickupPoint/>}/>
-                        <Route path='/help' element={<Help/>}/>
+                        <Route path='/feedback' element={<PrivateRoute><Feedback/></PrivateRoute>}/>
+                        <Route path='/pickup-point' element={<PrivateRoute><PickupPoint/></PrivateRoute>}/>
+                        <Route path='/help' element={<PrivateRoute><Help/></PrivateRoute>}/>
                     </Route>;
                     <Route path="/*" element={<NotFound/>} />
                     <Route path="signup" element={<SignUp/>}/>
