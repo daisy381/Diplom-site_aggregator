@@ -4,15 +4,16 @@ import {useAppContext} from "../../../context";
 import {useOutsideClick} from "../../../hooks";
 
 export const Modal = () => {
-  const {modal, setModal, clearItemsOnCart} = useAppContext()
+  const {modal, setModal, clearItemsOnCart,addToOrders,cartProducts} = useAppContext()
   const ref = useRef()
   const onClose = () => setModal({title: '', description: '', isShow: false})
 
   useOutsideClick(ref, onClose)
 
   const onCheckoutProduct = () => {
-    clearItemsOnCart()
-    onClose()
+      addToOrders(cartProducts);
+      clearItemsOnCart()
+      onClose()
   }
 
   if (!modal.isShow) {

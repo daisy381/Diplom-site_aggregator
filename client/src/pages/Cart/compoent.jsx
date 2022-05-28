@@ -50,7 +50,7 @@ export const Cart = () => {
               <h1 className='text-[20px] font-bold'> Ваша Корзина </h1>
               <ul className='flex flex-col gap-y-5 mt-[25px]'>
                 <li className='flex flex-1 items-center justify-between'>
-                  <span>Вес заказ</span>
+                  <span>Вес заказа</span>
                   <span className='opacity-50'>5 кг</span>
                 </li>
                 <li className='flex flex-1 items-center justify-between'>

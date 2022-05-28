@@ -30,9 +30,9 @@ export const FilterBlock = ({id,value,onChange,rateChange}) => {
   async function fetchData(id) {
     try {
       const response = await productsServices.getBrands(id);
-      if (!response.data) return;
+      if (!response) return;
 
-      setBrands(response.data);
+      setBrands(response);
     } catch (e) {
       console.error(e.message);
     }
@@ -49,8 +49,8 @@ export const FilterBlock = ({id,value,onChange,rateChange}) => {
               value = {value}
           >
             {
-              brands.map((item) => (
-                  <Checkbox key={item} value={item}>{ capitalizeFirstLetter(item) }</Checkbox>
+              brands.map((item,index) => (
+                  <Checkbox key={index} value={item.brand}>{ capitalizeFirstLetter(item.brand) }</Checkbox>
               ))
             }
           </Checkbox.Group>

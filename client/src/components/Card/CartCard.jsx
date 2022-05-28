@@ -32,10 +32,10 @@ export const CartCard = ({image_url, price, name, id}) => {
             {
               isFavorite ?
                   <Button onClick={toggleFavorite}
-                          className='max-w-[100px] hover:text-red-400 transition-colors text-blue-600/75'>В избранное</Button>
+                          className='max-w-[200px] hover:text-red-400 transition-colors text-blue-600/75'>Удалить из избранных</Button>
                   :
                   <Button onClick={toggleFavorite}
-                          className='max-w-[200px] hover:text-red-400 transition-colors text-blue-600/75'>Удалить из избранных</Button>
+                          className='max-w-[100px] hover:text-red-400 transition-colors text-blue-600/75'>В избранное</Button>
             }
           </div>
         </div>
