@@ -1,105 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-
-@font-face {
-    font-family: "Nunito";
-    src: url("fonts/Nunito-Regular.ttf");
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
+html {
+    font-family: 'Montserrat',  sans-serif;
 }
-
-@font-face {
-    font-family: "Nunito Medium";
-    src: url("fonts/Nunito-Medium.ttf");
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-}
-
-
-@font-face {
-    font-family: "Nunito SemiBold";
-    src: url("fonts/Nunito-SemiBold.ttf");
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Nunito Light";
-    src: url("fonts/Nunito-Light.ttf");
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Nunito Bold";
-    src: url("fonts/Nunito-Bold.ttf");
-    font-style: normal;
+.title {
+    font-size: 40px;
     font-weight: 700;
-    font-display: swap;
 }
 
-@font-face {
-    font-family: "Inter Regular";
-    src: url("fonts/Inter-Regular.ttf");
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Inter Black";
-    src: url("fonts/Inter-Black.ttf");
-    font-style: normal;
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Inter Medium";
-    src: url("fonts/Inter-Medium.ttf");
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Inter SemiBold";
-    src: url("fonts/Inter-SemiBold.ttf");
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Inter Light";
-    src: url("fonts/Inter-Light.ttf");
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-}
-
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Lato', sans-serif;
-}
-
-body{
-    background-color: rgb(240, 242, 245);
-}
-
-.home,
-.reports,
-.products {
+.checkboxContainer {
     display: flex;
-    height: 90vh;
+    align-items: center;
+}
+
+.checkboxContainer label::before {
+    content: '';
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: .15em;
+    margin-right: .5em;
+    border: .05em solid black;
+}
+
+.checkboxContainer input[type="checkbox"]:checked + label:before {
+    background-color: #2F89CE;
+    border-color: #2F89CE;
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    color: #fff;
 }
