@@ -15,47 +15,16 @@ import {productsServices} from "../../services/products";
 import {valueDefined} from "../../helpers/util";
 
 import cn from "classnames";
-import {useAppContext} from "../../context";
 
 
 export const Products = () => {
 
-    const [activeItem, setActiveItem] = useState(0)
-    const [brand, setBrand] = useState('');
-    const [categories, setCategories] = useState([]);
+    const [activeItem, setActiveItem] = useState(0);
     const [products,setProducts] = useState([]);
     const [categoryId, setCategoryId] = useState(3);
-    const {currentItems, pageNumbers, paginate, currentPage} = usePagination(9, products)
-
-    useEffect(async () => {
-        fetchData(categoryId)
-    }, [categoryId]);
-
-    useEffect(() => {
-        fetchCategories();
-    }, []);
-
-    useEffect( async () =>{
-        let response = null;
-        if(!valueDefined(brand)){
-            fetchData(categoryId)
-            return;
-        } else {
-            response = await productsServices.getByBrands(categoryId, brand);
-            let result =  addRating(response);
-            setProducts(result)
-            localStorage.setItem('products', JSON.stringify(result.data))
-        }
-    },[brand]);
-
-    const addRating = (item) => {
-        const data = item.data?.map(elem => {
-            const rating = elem['rating'] = Math.floor(2 + Math.random() * (5 + 1 - 2));
-            return {...elem , rating};
-        });
-
-        return {...item,data};
-    }
+    const [brand, setBrand] = useState('');
+    const [price,setPrice] = useState([]);
+    const {currentItems, pageNumbers, paginate, currentPage} = usePagination(9, products);
 
     const onClickActiveItem = (id,index) => () => {
         setActiveItem(index)
@@ -65,39 +34,52 @@ export const Products = () => {
         setBrand(checked);
     }, []);
 
-    const handleChangeRate = useCallback( (checked) => {
-        if(!valueDefined(checked)){
-            fetchData(categoryId)
-            return;
-        }
-        const result = products.data?.filter( (item)=> {
-            return checked.filter(elem => +elem === item.rating) > 0;
-        });
-        setProducts({data:result});
-    },[products]);
-
-    const handleSearch = useCallback((e) => {
-        setBrand('');
+    const handleChangePrice = useCallback((checked) => {
+        setPrice(checked);
     }, []);
+
+    // const handleSearch = useCallback((e) => {
+    //     setBrand('');
+    // }, []);
 
     async function fetchData(_id) {
         try {
             let response = await productsServices.getCategory(_id);
-            const result = addRating(response);
-            setProducts(result);
-            localStorage.setItem('products', JSON.stringify(result.data))
+            setProducts(response);
+            localStorage.setItem('products', JSON.stringify(response.data))
         } catch (e) {
             console.error(e.message);
         }
     }
 
-    async function fetchCategories() {
-        try {
-            const response = await productsServices.getCategories();
-            setCategories(response.data);
-        } catch (e) {
-            console.error(e.message);
+    useEffect(async () => {
+        fetchData(categoryId)
+    }, [categoryId]);
+
+
+    useEffect( async () =>{
+        let response = null;
+        if(!valueDefined(brand) && !valueDefined(price)){
+            fetchData(categoryId)
+            return;
+        } else {
+            let result = `/api/products?category_id=${categoryId}&limit=100`;
+            const getBrand = valueDefined(brand) ? `&brand=${brand}` : ``;
+            const getFilter = valueDefined(price) ? getQueryPrice(price) : ``;
+
+            result += getBrand + getFilter;
+            response = await productsServices.getFilter(result);
+            setProducts(response)
         }
+    },[brand,price]);
+
+    function getQueryPrice (price) {
+        const filterPrice = price.split('-');
+
+        if(filterPrice.length ===1){
+            return `&price_from=${filterPrice[0]}`;
+        }
+        return `&price_from=${filterPrice[0]}&price_to=${filterPrice[1]}`
     }
 
   return (
@@ -117,9 +99,10 @@ export const Products = () => {
           <div className="flex space-x-[50px]">
               <FilterBlock
                   id={categoryId}
-                  value={brand}
-                  onChange={handleChangeBrand}
-                  rateChange={handleChangeRate}
+                  valueBrand={brand}
+                  valuePrice={price}
+                  onChangePrice={handleChangeBrand}
+                  onChangeBrand={handleChangePrice}
               />
               {
                   currentItems.length === 0 ?

@@ -3,12 +3,12 @@ import {useState} from "react";
 import cn from "classnames";
 
 //components
-import {Content} from "./Content";
-import {Box} from "./Box";
-import {IconSelector} from "../../shared/IconSelector";
+import {Payment} from "./Payment";
+import {Delivery} from "./Delivery";
+import {Security} from "./Security";
+import {Goods} from "./Goods";
 
-//data
-import tabsdata from "../../data/tabsData.json";
+import {IconSelector} from "../../shared/IconSelector";
 
 
 const navButtons = [{
@@ -34,7 +34,7 @@ export const Help = () => {
   const onClickActive = (index) => () => setActiveTab(index)
 
   return (
-      <div className='h-screen bg-[#EEEEEE]'>
+      <div className='pb-10 bg-[#EEEEEE]'>
         <div className="flex flex-row-reverse space-x-5">
           <div className='flex flex-col bg-white h-screen min-w-[300px]'>
             {
@@ -55,26 +55,16 @@ export const Help = () => {
             }
         </div>
           {
-            activeTab === 0 && <Box title={tabsdata[0].title} subtitle={tabsdata[0].subtitle} description={tabsdata[0].description}/>
+            activeTab === 0 && <Payment/>
           }
           {
-            activeTab === 1 && <Box title={tabsdata[1].title} subtitle={tabsdata[1].subtitle} description={tabsdata[1].description}/>
+            activeTab === 1 && <Delivery/>
           }
           {
-            activeTab === 2 && <Content title={'Товары'} items={[
-              {title: 'Текст', description: 'текст текст текст текст текст текст текст текст текст текст текст текст текст текст  текст текст текст текст текст текст текст текст текст текст '},
-              {title: 'Текст', description: 'текст текст текст текст текст текст текст текст текст текст текст текст текст текст  текст текст текст текст текст текст текст текст текст текст '},
-              {title: 'Текст', description: 'текст текст текст текст текст текст текст текст текст текст текст текст текст текст  текст текст текст текст текст текст текст текст текст текст '},
-              {title: 'Текст', description: 'текст текст текст текст текст текст текст текст текст текст текст текст текст текст  текст текст текст текст текст текст текст текст текст текст '}
-            ]}/>
+            activeTab === 2 && <Goods/>
           }
           {
-            activeTab === 3 && <Content title={'Безопасность'} items={[
-                {title: 'Текст', description: 'текст текст текст текст текст текст текст текст текст текст текст текст текст текст  текст текст текст текст текст текст текст текст текст текст '},
-              {title: 'Текст', description: 'текст текст текст текст текст текст текст текст текст текст текст текст текст текст  текст текст текст текст текст текст текст текст текст текст '},
-              {title: 'Текст', description: 'текст текст текст текст текст текст текст текст текст текст текст текст текст текст  текст текст текст текст текст текст текст текст текст текст '},
-              {title: 'Текст', description: 'текст текст текст текст текст текст текст текст текст текст текст текст текст текст  текст текст текст текст текст текст текст текст текст текст '}
-            ]}/>
+            activeTab === 3 && <Security/>
           }
       </div>
 

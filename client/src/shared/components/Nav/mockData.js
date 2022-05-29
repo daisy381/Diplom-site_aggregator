@@ -15,17 +15,12 @@ export const menuList = [{
   iconId: "report"
 }, {
   id: 4,
-  title: "Команда",
-  link: '/teams',
-  iconId: "team"
-}, {
-  id: 5,
   title: "Пункт выдачи",
   link: '/pickup-point',
   iconId: "location"
 },
   {
-    id: 7,
+    id: 5,
     title: "Помощь",
     link: '/help',
     iconId: "message"

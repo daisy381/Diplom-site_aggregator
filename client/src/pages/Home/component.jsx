@@ -82,12 +82,11 @@ export const Home = () => {
               <div className="flex-col inline-flex">
                 <h1 className="title text-secondary">About us</h1>
                 <p className='mt-5 leading-[30px] text-[20px]'>
-                  In a world where the technological world does not stand still,
-                  where new products are added every day, it becomes difficult to find a
-                  quality product. Not including the fact that you need to spend a lot of
-                  time to find the best option, which is profitable both in price and quality.
-                  The market is very oversaturated and it is difficult to choose and analyze anything.
-                  We want to help all those who are lost in this world of abundance of goods.</p>
+                  Задача организации, в особенности же консультация с профессионалами из IT в значительной
+                  степени обуславливает создание дальнейших направлений развития проекта. Задача организации,
+                  в особенности же рамки и место обучения кадров способствует повышению актуальности модели развития?
+                  Таким образом, постоянное информационно-техническое обеспечение нашей деятельности играет важную
+                  роль в формировании модели развития.</p>
               </div>
             </div>
           </div>

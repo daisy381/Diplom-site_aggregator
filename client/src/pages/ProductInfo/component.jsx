@@ -1,5 +1,5 @@
 //library
-import {useMemo, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {useParams} from "react-router-dom";
 
 //components
@@ -11,21 +11,38 @@ import {Rate} from "antd";
 //helpers
 import {useCart,useFavorite} from "../../hooks";
 import {addSpaces} from "../../helpers/util";
+import {productsServices} from "../../services/products";
+
+//data
+import products from '../../data/main_product.json';
 
 //styles
 import cn from "classnames";
 
 export const ProductInfo = () => {
-
   const {productId} = useParams()
-  const products = JSON.parse(localStorage.getItem('products'))
-  const product = products.length > 0 && products?.find(el => el.id === +productId)
 
-  const {itemsOnCart, addItemOnCart} = useCart(product)
-  const {isFavorite, toggleFavorite} = useFavorite(product)
+  const [state,setState] = useState({});
 
-  const cutTitle = useMemo(() => product.name,[product.name.length])
-  const rate =  Math.floor(10 + Math.random() * (100 + 1 - 10))
+  const {itemsOnCart, addItemOnCart} = useCart(state)
+  const {isFavorite, toggleFavorite} = useFavorite(state)
+
+  const cutTitle = useMemo(() => state?.name,[state?.name?.length])
+  const rate =  Math.floor(10 + Math.random() * (100 + 1 - 10));
+
+
+  async function fetchData() {
+    try {
+      let response = await productsServices.getProductsPage(productId);
+      setState(response.data);
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
+
+  useEffect(async () => {
+    fetchData()
+  }, []);
 
   return (
       <div className='mt-[130px]'>
@@ -33,7 +50,7 @@ export const ProductInfo = () => {
           <div className="grid grid-cols-12 col-span-full row-start-1 h-[500px] auto-rows-auto justify-center mb-[100px]">
 
             <div className="col-start-1 col-end-8 flex self-end bg-white rounded-md h-full">
-              <img className='w-full self-center rounded-md' src={product.image_url} alt="card"/>
+              <img className='w-full self-center rounded-md' src={state?.image_url} alt="card"/>
             </div>
             <div className="col-start-9 col-end-13 flex flex-col justify-between p-[30px] bg-white rounded-md shadow">
               <div>
@@ -41,7 +58,7 @@ export const ProductInfo = () => {
 
                 <div className="flex justify-between mt-2">
                   <div className='flex space-x-2 mt-[10px]'>
-                    <Rate style={{display:'inherit',fontSize:30}} disabled defaultValue={3}/>
+                    <Rate style={{display:'inherit',fontSize:30}} disabled defaultValue={4}/>
                   </div>
                   <span className='opacity-50 text-[22px] mt-[20px]'>{rate} reviews</span>
                 </div>
@@ -62,16 +79,16 @@ export const ProductInfo = () => {
                 <div className="flex flex-col mt-5 h-[100px] bg-slate-100 rounded">
                   <div className="flex justify-between mt-2 p-2">
                     <span className='text-[18px]'>В кредит</span>
-                    <span>{Math.floor(product.price / 60)} тнг x 60</span>
+                    <span>{Math.floor(state?.price / 60)} тнг x 60</span>
                   </div>
                   <div className="flex justify-between mt-2 p-2">
                     <span className='text-[18px] '>В рассрочку</span>
-                    <span>{Math.floor(product.price / 24)} тнг x 24</span>
+                    <span>{Math.floor(state?.price / 24)} тнг x 24</span>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-2 mt-[20px]">
-                  <span className='text-[40px] text-secondary font-bold'>{addSpaces(product.price)} <span className='text-[30px]'>тг</span></span>
+                  <span className='text-[40px] text-secondary font-bold'>{addSpaces(state?.price)} <span className='text-[30px]'>тг</span></span>
                 </div>
 
               </div>
@@ -106,7 +123,7 @@ export const ProductInfo = () => {
             <h1 className="text-[30px] font-bold">Похожие товары</h1>
             <div className="flex space-x-4 mt-[30px]">
               {
-                products.slice(0, 4).map((item, index) => (
+                products[0].slice(0, 4).map((item, index) => (
                     <BaseCard key={item.name} {...item}/>
                 ))
               }
@@ -125,22 +142,22 @@ export const ProductInfo = () => {
             <div className="p-5 bg-white flex space-x-5 shadow mt-[50px]">
               <div className="flex flex-col gap-y-5 min-w-[200px]">
                 {
-                  new Array(8).fill(null).map((_) => <li className='list-none text-gray-400'>Текст</li>)
+                  new Array(8).fill(null).map((_,index) => <li key={index} className='list-none text-gray-400'>Текст</li>)
                 }
               </div>
               <div className="flex flex-col gap-y-5">
                 {
-                  new Array(8).fill(null).map((_) => <li className='list-none font-medium min-w-[200px]'>Текст</li>)
+                  new Array(8).fill(null).map((_,index) => <li key={index} className='list-none font-medium min-w-[200px]'>Текст</li>)
                 }
               </div>
               <div className="flex flex-col gap-y-5 min-w-[200px]">
                 {
-                  new Array(8).fill(null).map((_) => <li className='list-none text-gray-400'>Текст</li>)
+                  new Array(8).fill(null).map((_,index) => <li key={index} className='list-none text-gray-400'>Текст</li>)
                 }
               </div>
               <div className="flex flex-col gap-y-5">
                 {
-                  new Array(8).fill(null).map((_) => <li className='list-none font-medium min-w-[200px]'>Текст</li>)
+                  new Array(8).fill(null).map((_,index) => <li key={index} className='list-none font-medium min-w-[200px]'>Текст</li>)
                 }
               </div>
             </div>

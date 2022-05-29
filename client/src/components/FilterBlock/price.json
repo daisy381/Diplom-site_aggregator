@@ -1,0 +1,27 @@
+[
+  {
+    "name":"50000-99999",
+    "price_from":50000,
+    "price_to": 99999
+  },
+  {
+    "name":"100000-149999",
+    "price_from":100000,
+    "price_to": 149999
+  },
+  {
+    "name":"150000-199999",
+    "price_from":150000,
+    "price_to": 199999
+  },
+  {
+    "name":"200000-499999",
+    "price_from":200000,
+    "price_to": 499999
+  },
+  {
+    "name":"500000",
+    "price_from":499999,
+    "price_to": null
+  }
+]

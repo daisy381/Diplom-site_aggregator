@@ -3,18 +3,18 @@
      "id": 1,
      "name": "Islam Duisenbek",
      "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/e2/e254754b-8b10-11ec-a244-005056b6dbd7.jpeg",
-     "description": "I'm Frontend Developer.The FrontEnd developer creates a part of the web page that is visible to the user, and his main task is to accurately convey what the designer created in the layout, as well as to implement user logic."
+     "description": "Основатель компании и директор по развитию. Курирует новые бизнес-проекты и их развитие. Отвечает за всю операционную деятельность и взаимодействие с ключевыми клиентами."
      },
     {
      "id": 2,
      "name": "Bekzhan Aronov",
      "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/e2/e254754b-8b10-11ec-a244-005056b6dbd7.jpeg",
-     "description": "I'm Backend Developer.Backend developers build code that allows a database and an application to communicate with one another. Backend developers take care and maintain the back-end of a website, Including databases, servers, and apps, and they control what you don't see"
+     "description": "Директор по технологиям. Куратор вопросов технологизации и руководитель отдела поддержки и развития. Отвечает за всю операционную деятельность и взаимодействие с клиентами."
     },
     {
      "id": 3,
      "name": "Nurgazina Kamila",
      "image_url": "https://www.mechta.kz/export/1cbitrix/import_files/e2/e254754b-8b10-11ec-a244-005056b6dbd7.jpeg",
-     "description": "I'm Designer and Tech Writer.The main task of a technical writer is to write a document that would satisfy certain requirements. Requirements can be determined both by regulations that exist in the industry of application of the product, and by various goals for itself."
+     "description": "Креативный директор. Идеолог маркетинговой политики и руководитель отдела дизайна. Отвечает за всю операционную деятельность. Курирует новые бизнес-проекты и их развитие."
     }
 ]

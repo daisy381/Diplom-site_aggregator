@@ -1,3 +1,5 @@
+import {useState,useEffect} from "react"
+
 //components
 import {IconSelector} from "../../shared/IconSelector";
 import {Button} from "../../shared/components/Button";
@@ -7,28 +9,42 @@ import {EmptyBlock} from "../../shared/components/EmptyBlock/component";
 //context
 import {useAppContext} from "../../context";
 import {addSpaces} from "../../helpers/util";
+import {productsServices} from "../../services/products";
 
 export const Cart = () => {
 
   const {cartProducts, setModal} = useAppContext();
+  const [state,setState] = useState([]);
 
   const totalCost = cartProducts.reduce((acc,item)=> acc+item.price,0);
 
-  if (cartProducts.length === 0) {
-    return (
-        <EmptyBlock
-        title='Корзина пуста'
-        iconId='cart'
-        description='Воспользуйтесь поиском, чтобы найти всё что нужно.'
-        />)
+  async function fetchData() {
+    try {
+      let response = await productsServices.getBasketData();
+      setState(response);
+    } catch (e) {
+      console.error(e.message);
+    }
   }
 
+  useEffect(() => {
+    fetchData();
+  }, [state]);
 
   const checkoutProduct = () => {
     setModal( {
       title: "Оформление товара",
       description: 'Вы уверены что хотите оформить заказ?',
       isShow: true})
+  }
+
+  if (cartProducts.length === 0) {
+    return (
+        <EmptyBlock
+            title='Корзина пуста'
+            iconId='cart'
+            description='Воспользуйтесь поиском, чтобы найти всё что нужно.'
+        />)
   }
 
   return (
@@ -41,8 +57,8 @@ export const Cart = () => {
           <div className="flex space-x-2 mt-[20px]">
             <div className='flex flex-col flex-1 gap-y-5'>
               {
-                cartProducts.map(item => (
-                    <CartCard key={item.id} {...item}/>
+                state.map(item => (
+                    <CartCard key={item[0].id} {...item[0]}/>
                 ))
               }
             </div>
