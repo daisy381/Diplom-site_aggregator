@@ -29,7 +29,7 @@ export const Cart = () => {
 
   useEffect(() => {
     fetchData();
-  }, [state]);
+  }, []);
 
   const checkoutProduct = () => {
     setModal( {

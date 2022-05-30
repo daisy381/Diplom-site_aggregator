@@ -7,7 +7,10 @@ export const productsServices = {
     getFilter,
     getBasketData,
     addToBasket,
-    deleteToBasket
+    deleteToBasket,
+    getFavouritesData,
+    addToFavourites,
+    deleteToFavourites
 };
 
 function getProductsPage(url) {
@@ -40,7 +43,7 @@ function getBrands(id) {
 
 //Get Products
 function getCategory(id) {
-    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&limit=100`, {
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&limit=50`, {
         headers: {
             'Content-type': 'application/json',
         },
@@ -68,6 +71,8 @@ function getByText(text) {
         .then((response) => response.json());
 }
 
+
+//All about Basket
 function getBasketData() {
     return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/basket`, {
         headers: {
@@ -77,8 +82,6 @@ function getBasketData() {
         .then((response) => response.json());
 }
 
-
-//All about Basket
 function addToBasket(id){
     return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products/${id}/buy`,{
         headers: {
@@ -96,3 +99,32 @@ function deleteToBasket(id){
         method:'post'
     })
 }
+
+//All about Favourites
+function getFavouritesData(){
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/favourites`,{
+        headers: {
+            'Content-type': 'application/json',
+        },
+    })
+        .then((response) => response.json());
+}
+
+function addToFavourites(id){
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products/${id}/favourite`,{
+        headers: {
+            'Content-type': 'application/json',
+        },
+        method:'post'
+    })
+}
+
+function deleteToFavourites(id){
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/favourites?id=${id}`,{
+        headers: {
+            'Content-type': 'application/json',
+        },
+        method:'post'
+    })
+}
+
