@@ -10,7 +10,9 @@ export const productsServices = {
     deleteToBasket,
     getFavouritesData,
     addToFavourites,
-    deleteToFavourites
+    deleteToFavourites,
+    getServiceData,
+    getSearchHistoryData
 };
 
 function getProductsPage(url) {
@@ -128,3 +130,21 @@ function deleteToFavourites(id){
     })
 }
 
+function getServiceData() {
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/services`, {
+        headers: {
+            'Content-type': 'application/json',
+        },
+    })
+        .then((response) => response.json());
+}
+
+
+function getSearchHistoryData() {
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products/search/history`, {
+        headers: {
+            'Content-type': 'application/json',
+        },
+    })
+        .then((response) => response.json());
+}

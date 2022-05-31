@@ -137,31 +137,6 @@ export const ProductInfo = () => {
               застежками-липучками, стелька с анатомическим подсводником.
             </div>
           </div>
-          <div className="mt-[50px]">
-            <h1 className="text-[30px] font-bold">Харектеристики</h1>
-            <div className="p-5 bg-white flex space-x-5 shadow mt-[50px]">
-              <div className="flex flex-col gap-y-5 min-w-[200px]">
-                {
-                  new Array(8).fill(null).map((_,index) => <li key={index} className='list-none text-gray-400'>Текст</li>)
-                }
-              </div>
-              <div className="flex flex-col gap-y-5">
-                {
-                  new Array(8).fill(null).map((_,index) => <li key={index} className='list-none font-medium min-w-[200px]'>Текст</li>)
-                }
-              </div>
-              <div className="flex flex-col gap-y-5 min-w-[200px]">
-                {
-                  new Array(8).fill(null).map((_,index) => <li key={index} className='list-none text-gray-400'>Текст</li>)
-                }
-              </div>
-              <div className="flex flex-col gap-y-5">
-                {
-                  new Array(8).fill(null).map((_,index) => <li key={index} className='list-none font-medium min-w-[200px]'>Текст</li>)
-                }
-              </div>
-            </div>
-          </div>
       <div className="mt-[50px] mb-[100px]">
         <h1 className="text-[30px] font-bold">Отзывы о товаре</h1>
         <div className="mt-[50px] flex gap-x-4">
