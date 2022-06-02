@@ -15,7 +15,7 @@ import {productsServices} from "../../services/products";
 import {valueDefined} from "../../helpers/util";
 
 import cn from "classnames";
-
+import {IconSelector} from "../../shared/IconSelector";
 
 export const Products = () => {
 
@@ -24,6 +24,7 @@ export const Products = () => {
     const [categoryId, setCategoryId] = useState(3);
     const [brand, setBrand] = useState('');
     const [price,setPrice] = useState([]);
+    const [search, setSearch] = useState('');
     const {currentItems, pageNumbers, paginate, currentPage} = usePagination(9, products);
 
     const onClickActiveItem = (id,index) => () => {
@@ -38,9 +39,12 @@ export const Products = () => {
         setPrice(checked);
     }, []);
 
-    // const handleSearch = useCallback((e) => {
-    //     setBrand('');
-    // }, []);
+
+    const handleSearch = useCallback((e) => {
+        if (e.key === 'Enter') {
+            setSearch(e.target.value);
+        }
+    }, []);
 
     async function fetchData(_id) {
         try {
@@ -59,19 +63,24 @@ export const Products = () => {
 
     useEffect( async () =>{
         let response = null;
-        if(!valueDefined(brand) && !valueDefined(price)){
+        if(!valueDefined(brand) && !valueDefined(price)  && !valueDefined(search)){
             fetchData(categoryId)
             return;
         } else {
-            let result = `/api/products?category_id=${categoryId}&limit=100`;
-            const getBrand = valueDefined(brand) ? `&brand=${brand}` : ``;
-            const getFilter = valueDefined(price) ? getQueryPrice(price) : ``;
+            if(!valueDefined(search)){
+                let result = `/api/products?category_id=${categoryId}&limit=100`;
+                const getBrand = valueDefined(brand) ? `&brand=${brand}` : ``;
+                const getFilter = valueDefined(price) ? getQueryPrice(price) : ``;
 
-            result += getBrand + getFilter;
-            response = await productsServices.getFilter(result);
-            setProducts(response)
+                result += getBrand + getFilter;
+                response = await productsServices.getFilter(result);
+                setProducts(response)
+            }else{
+                response = await productsServices.getByText(search);
+                setProducts(response);
+            }
         }
-    },[brand,price]);
+    },[brand,price,search]);
 
     function getQueryPrice (price) {
         const filterPrice = price.split('-');
@@ -110,15 +119,24 @@ export const Products = () => {
                           <span className='h-24 animate-spin w-24 rounded-full border-l-8 border-l-secondary border-r-8 border-t-8 border-b-8 border-gray-200'/>
                       </div>
                       :
-                      <div className="flex-1 grid grid-cols-3 gap-10 items-start">
-                          {
-                              currentItems.map((item) => (
-                                  <BaseCard {...item} key={item.id} products={products}/>
-                              ))
-                          }
-                          <div className='col-start-2 self-end'>
-                              <Pagination paginate={paginate} currentPage={currentPage} pageNumbers={pageNumbers}/>
+                      <div>
+                          <div className='relative'>
+                              <input className='w-full p-2 mr-10 text-black rounded-full' type="text" placeholder='Поиск' onKeyDown={handleSearch}/>
+                              <span className='absolute top-2 block right-14'>
+                                  <IconSelector id='search'/>
+                              </span>
                           </div>
+                          <div className="flex-1 grid grid-cols-3 gap-10 items-start mt-[20px]">
+                              {
+                                  currentItems.map((item) => (
+                                      <BaseCard {...item} key={item.id} products={products}/>
+                                  ))
+                              }
+                              <div className='col-start-2 self-end'>
+                                  <Pagination paginate={paginate} currentPage={currentPage} pageNumbers={pageNumbers}/>
+                              </div>
+                          </div>
+
                       </div>
               }
           </div>
