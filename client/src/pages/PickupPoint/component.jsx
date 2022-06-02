@@ -1,12 +1,7 @@
 import { YMaps, Map, Placemark } from "react-yandex-maps";
 import {IconSelector} from "../../shared/IconSelector";
-import {useState} from "react";
-import cn from "classnames";
 
 export const PickupPoint = () => {
-  // const [isOpen, setOpen] = useState(false)
-  //
-  // const onToggleOpen = () => setOpen(prev => !prev)
 
   const mapData = {
     center: [43.2566700,76.9286100],

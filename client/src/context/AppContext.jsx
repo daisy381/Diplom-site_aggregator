@@ -11,7 +11,7 @@ const AppContext = createContext({
   setModal: () => {},
   modal: {},
   clearItemsOnCart: () => {},
-  addToOrders: () => {}
+  addToOrders: () => {},
 })
 
 export const AppProvider = ({children}) => {
@@ -60,7 +60,7 @@ export const AppProvider = ({children}) => {
               setFavorites,
               addToOrders,
               orders,
-              setOrders
+              setOrders,
             }
           }>
         {children}
