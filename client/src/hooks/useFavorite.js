@@ -5,8 +5,8 @@ import {productsServices} from "../services/products";
 
 export const useFavorite = (product) => {
 
-  const {setFavorites, favorites} = useAppContext()
-  const [isFavorite, setFavorite] = useState(favorites.some(el => el?.id === product.id))
+  const[favorites,setFavorites] = useState([]);
+  const[isFavorite,setIsFavorite] = useState(false);
 
   async function addFavorite(_id) {
     try {
@@ -24,21 +24,33 @@ export const useFavorite = (product) => {
     }
   }
 
+  async function fetchData() {
+    try {
+      let response = await productsServices.getFavouritesData();
+      setFavorites(response);
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect( ()=>{
+    setIsFavorite(favorites?.some(el => el[0]?.id === product.id))
+  },[favorites])
+
   const toggleFavorite = (e) => {
     e.stopPropagation()
-    setFavorite(prev => !prev)
+
     if (isFavorite) {
-      setFavorites(prev => {
-        deleteFavorite(product.id)
-        const filteredItems = prev.filter(el => el.id !== product.id)
-        localStorage.setItem('favorites', JSON.stringify(filteredItems))
-        return filteredItems
-      })
+      deleteFavorite(product.id);
     } else {
-      addFavorite(product.id)
-      setFavorites(prev => [...prev, product])
-      localStorage.setItem('favorites', JSON.stringify([...favorites, product]))
+      addFavorite(product.id);
     }
+    fetchData();
+
   }
 
   return {toggleFavorite, isFavorite}

@@ -12,8 +12,10 @@ import {Rate} from "antd";
 //hooks
 import {useCart,useFavorite} from "../../hooks";
 
+
 export const BaseCard = ({name, image_url, price, id,rating,hideOrderButton = false}) => {
     const navigate = useNavigate()
+
 
     const {toggleFavorite, isFavorite} = useFavorite({name, image_url, price, id} || {})
     const {addItemOnCart,itemsOnCart} = useCart({name, image_url, price, id} || {})

@@ -1,8 +1,17 @@
+//library
+import {useEffect, useState} from "react";
+
+//components
 import {IconSelector} from "../../shared/IconSelector";
 import {BaseCard} from "../../components/Card/BaseCard";
 import {EmptyBlock} from "../../shared/components/EmptyBlock/component";
+
+//context
+import {useAppContext} from "../../context";
+
+//services
 import {productsServices} from "../../services/products";
-import {useEffect, useState} from "react";
+import {useFavorite} from "../../hooks";
 
 export const Favorites = () => {
 
@@ -21,8 +30,12 @@ export const Favorites = () => {
     fetchData();
   }, []);
 
+
   if (!state.length) {
-    return <EmptyBlock iconId='heart' title='Избранные пусто' description='Воспользуйтесь поиском, чтобы найти всё что нужно.'/>
+    return <EmptyBlock
+        iconId='heart'
+        title='Избранные пусто'
+        description='Воспользуйтесь поиском, чтобы найти всё что нужно.'/>
   }
 
   return (
@@ -33,7 +46,9 @@ export const Favorites = () => {
           <h1 className='text-[30px] uppercase font-bold'>Избранные</h1>
         </div>
         <div className='flex flex-wrap mt-[40px] justify-center gap-x-4'>
-          {state.map( (item,index) => (<BaseCard key={index} {...item[0]}/>))}
+          {
+            state.map( (item,index) => (<BaseCard key={index} {...item[0]}/>))
+          }
         </div>
       </div>
     </div>
