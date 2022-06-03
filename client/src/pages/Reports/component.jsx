@@ -143,10 +143,10 @@ export const Reports = () => {
             </div>
             <div className='bg-white flex w-1/2 justify-between rounded-3xl px-[30px] py-[30px] shadow-md'>
               <div className='flex gap-y-5 flex-col'>
-                <span className='opacity-50 text-[16px] font-medium'>{title}</span>
-                <span className='text-blue-900 text-[24px] font-bold'>$124 345</span>
+                <span className='opacity-50 text-[16px] font-medium'>Customers</span>
+                <span className='text-blue-900 text-[24px] font-bold'>4 302</span>
                 <div className='flex gap-x-4'>
-                  <span className='text-green-500 font-bold text-[16px]'>47%</span>
+                  <span className='text-green-500 font-bold text-[16px]'>+13%</span>
                   <span className='font-medium opacity-50 text-[16px]'> since last month</span>
                 </div>
               </div>
@@ -154,10 +154,10 @@ export const Reports = () => {
             </div>
             <div className='bg-white flex w-1/2 justify-between rounded-3xl px-[30px] py-[30px] shadow-md'>
               <div className='flex gap-y-5 flex-col'>
-                <span className='opacity-50 text-[16px] font-medium'>{title}</span>
-                <span className='text-blue-900 text-[24px] font-bold'>$124 345</span>
+                <span className='opacity-50 text-[16px] font-medium'>Avg.Revenue</span>
+                <span className='text-blue-900 text-[24px] font-bold'>$3 000</span>
                 <div className='flex gap-x-4'>
-                  <span className='text-green-500 font-bold text-[16px]'>47%</span>
+                  <span className='text-green-500 font-bold text-[16px]'>+31%</span>
                   <span className='font-medium opacity-50 text-[16px]'> since last month</span>
                 </div>
               </div>

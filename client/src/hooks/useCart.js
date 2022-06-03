@@ -4,10 +4,11 @@ import {productsServices} from "../services/products";
 
 export const useCart = (product = {}) => {
   const {setCartProducts, cartProducts, hasCart} = useAppContext()
+  const state = localStorage.getItem('location');
 
-  async function addData(_id) {
+  async function addData(_id,state) {
     try {
-       await productsServices.addToBasket(_id);
+       await productsServices.addToBasket(_id,state);
     } catch (e) {
       console.error(e.message);
     }
@@ -25,7 +26,7 @@ export const useCart = (product = {}) => {
 
   const addItemOnCart = (e) => {
     e.stopPropagation()
-    addData(product.id);
+    addData(product.id,state);
     setCartProducts(prev => [...prev, product])
     localStorage.setItem('cartItems', JSON.stringify([...cartProducts, product]))
   }

@@ -84,8 +84,8 @@ function getBasketData() {
         .then((response) => response.json());
 }
 
-function addToBasket(id){
-    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products/${id}/buy`,{
+function addToBasket(id,state){
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products/${id}/buy?state=${state}`,{
         headers: {
             'Content-type': 'application/json',
         },

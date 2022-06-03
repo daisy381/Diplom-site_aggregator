@@ -36,6 +36,8 @@ export const AppProvider = ({children}) => {
   useEffect(() => {
     const itemsOnCart = JSON.parse(localStorage.getItem('cartItems'))
     const favoriteItems = JSON.parse(localStorage.getItem('favorites'))
+    localStorage.setItem('location','almaty');
+
 
     if (itemsOnCart) {
       setCartProducts(prev => itemsOnCart)
