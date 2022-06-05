@@ -40,7 +40,7 @@ export const FilterBlock = ({id,valueBrand,valuePrice,onChangePrice,onChangeBran
     }, []);
 
     return (
-        <div className="bg-white shadow-md p-[50px]">
+        <div className="bg-white shadow-md p-[50px] w-[350px]">
             <h1 className="text-[30px] font-medium">Filters</h1>
             <div className="mt-10">
                 <h1 className="text-[20px] mb-5">Brands</h1>

@@ -15,7 +15,7 @@ export const Orders = () => {
   const [id,setId] = useState(0);
 
   const deleteOrder = (id) => {
-    setOrders(orders.filter( item=> id !== item.id))
+    setOrders(orders.filter( (item,index) => id !== index ))
   }
 
   const totalCosts = orders.map( item => item.reduce((acc,elem)=> acc + elem.price,0));

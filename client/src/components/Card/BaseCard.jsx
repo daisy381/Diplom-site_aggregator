@@ -12,10 +12,12 @@ import {Rate} from "antd";
 //hooks
 import {useCart,useFavorite} from "../../hooks";
 
+//img
+import default_img from '../../img/images.png'
+
 
 export const BaseCard = ({name, image_url, price, id,rating,hideOrderButton = false}) => {
     const navigate = useNavigate()
-
 
     const {toggleFavorite, isFavorite} = useFavorite({name, image_url, price, id} || {})
     const {addItemOnCart,itemsOnCart} = useCart({name, image_url, price, id} || {})
@@ -29,7 +31,7 @@ export const BaseCard = ({name, image_url, price, id,rating,hideOrderButton = fa
 
     return (
         <div onClick={goToProduct} className='flex max-w-[330px] max-h-[520px] flex-col p-[25px] cursor-pointer hover:scale-105 transition-transform rounded shadow-md bg-white'>
-            <img src={image_url || ''} alt=""/>
+            <img src={image_url || default_img} alt=""/>
             <div className="flex justify-between items-center mt-[30px]">
                 <span className="text-[14px] wra">{name.length > 10 ? name.slice(0, 45).concat('...') : name}</span>
             </div>

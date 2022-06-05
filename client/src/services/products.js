@@ -45,7 +45,7 @@ function getBrands(id) {
 
 //Get Products
 function getCategory(id) {
-    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&limit=50`, {
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=${id}&limit=20`, {
         headers: {
             'Content-type': 'application/json',
         },

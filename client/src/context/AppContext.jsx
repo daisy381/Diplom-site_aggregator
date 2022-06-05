@@ -5,8 +5,6 @@ const AppContext = createContext({
   products: [],
   cartProducts: [],
   setCartProducts: () => {},
-  favorites: [],
-  setFavorites: () => {},
   hasCart: {},
   setModal: () => {},
   modal: {},
@@ -18,7 +16,6 @@ export const AppProvider = ({children}) => {
 
   const [products, setProducts] = useState([])
   const [cartProducts, setCartProducts] = useState([])
-  const [favorites, setFavorites] = useState([])
   const [modal, setModal] = useState({isShow: false, title: '', description: ''})
   const [orders, setOrders] = useState([]);
 
@@ -35,15 +32,10 @@ export const AppProvider = ({children}) => {
 
   useEffect(() => {
     const itemsOnCart = JSON.parse(localStorage.getItem('cartItems'))
-    const favoriteItems = JSON.parse(localStorage.getItem('favorites'))
     localStorage.setItem('location','almaty');
-
 
     if (itemsOnCart) {
       setCartProducts(prev => itemsOnCart)
-    }
-    if (favoriteItems) {
-      setFavorites(favoriteItems)
     }
   }, [])
 
@@ -58,8 +50,6 @@ export const AppProvider = ({children}) => {
               setProducts,
               cartProducts,
               setCartProducts,
-              favorites,
-              setFavorites,
               addToOrders,
               orders,
               setOrders,

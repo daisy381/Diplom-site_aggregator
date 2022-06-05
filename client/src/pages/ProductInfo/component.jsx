@@ -10,11 +10,11 @@ import {Rate} from "antd";
 
 //helpers
 import {useCart,useFavorite} from "../../hooks";
-import {addSpaces} from "../../helpers/util";
+import {addSpaces, valueDefined} from "../../helpers/util";
 import {productsServices} from "../../services/products";
 
 //data
-import products from '../../data/main_product.json';
+import comments from "../../data/comment.json";
 
 //styles
 import cn from "classnames";
@@ -26,6 +26,7 @@ export const ProductInfo = () => {
 
   const {itemsOnCart, addItemOnCart} = useCart(state)
   const {isFavorite, toggleFavorite} = useFavorite(state)
+  const [nearest,setNearest] = useState([]);
 
   const cutTitle = useMemo(() => state?.name,[state?.name?.length])
   const rate =  Math.floor(10 + Math.random() * (100 + 1 - 10));
@@ -40,9 +41,32 @@ export const ProductInfo = () => {
     }
   }
 
+  function getNearest() {
+    return fetch(`${process.env.REACT_APP_SERVERLESS_URL}/api/products?category_id=3&limit=10&brand=${state.brand}`, {
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+        .then((response) => response.json());
+  }
+
+  async function fetchNearestData(){
+    try{
+      let response = await getNearest();
+      setNearest(response.data);
+    } catch (e) {
+      console.error(e.message);
+    }
+
+  }
+
   useEffect(async () => {
-    fetchData()
+    await fetchData()
   }, []);
+
+  useEffect( async ()=>{
+    await fetchNearestData()
+  },[state])
 
   return (
       <div className='mt-[130px]'>
@@ -58,7 +82,7 @@ export const ProductInfo = () => {
 
                 <div className="flex justify-between mt-2">
                   <div className='flex space-x-2 mt-[10px]'>
-                    <Rate style={{display:'inherit',fontSize:30}} disabled defaultValue={4}/>
+                    <Rate style={{display:'inherit',fontSize:30}} disabled value={state?.rating}/>
                   </div>
                   <span className='opacity-50 text-[22px] mt-[20px]'>{rate} reviews</span>
                 </div>
@@ -123,7 +147,7 @@ export const ProductInfo = () => {
             <h1 className="text-[30px] font-bold">Похожие товары</h1>
             <div className="flex space-x-4 mt-[30px]">
               {
-                products[0].slice(0, 4).map((item, index) => (
+                nearest.slice(0, 4).map((item, index) => (
                     <BaseCard key={item.name} {...item}/>
                 ))
               }
@@ -131,99 +155,57 @@ export const ProductInfo = () => {
           </div>
           <div className="mt-[50px]">
             <h1 className="text-[30px] font-bold">Описание</h1>
-            <div className='bg-white shadow pt-5 pb-[50px] px-5 mt-[50px]'>
-              Классическая спортивная модель с классическим спортивным дизайном. Присмотритесь к ним, если ищете обувь к конкретным
-              комплектам одежды. Натуральная кожа внутри и снаружи, высокая укрепленная пятка, сила обхвата регулируется двумя
-              застежками-липучками, стелька с анатомическим подсводником.
+            <div className='bg-white shadow pt-5 pb-[20px] px-5 mt-[50px]'>
+              {
+                valueDefined(!state.description) ?
+                    (
+                        <div>Описание отсутсвует</div>
+                    ):
+                    (
+                        <div>{state.description}</div>
+                    )
+              }
+
             </div>
           </div>
-      <div className="mt-[50px] mb-[100px]">
-        <h1 className="text-[30px] font-bold">Отзывы о товаре</h1>
-        <div className="mt-[50px] flex gap-x-4">
-          <div className="flex-col flex gap-y-4">
-            <div className='bg-white shadow p-[30px]'>
-              <div className='flex justify-between items-center w-full'>
-                <div className='flex items-center space-x-2'>
-                  <div className='h-14 w-14 bg-gray-400 flex items-center justify-center rounded-full'>
-                    <IconSelector id='user' fill='white'/>
-                  </div>
-                  <span className='text-[15px] font-bold'>Имя. Фам</span>
-                </div>
-                <div className='flex space-x-2 items-center'>
-                  <span className='text-gray-400'>4 мая 2022</span>
-                  <div className='flex items-center space-x-2'>
-                    <IconSelector id='star' fill={'gold'} />
-                    <span> 3.5</span>
-                  </div>
-                </div>
+          <div className="mt-[50px] mb-[100px]">
+            <h1 className="text-[30px] font-bold">Отзывы о товаре</h1>
+            <div className="mt-[50px] flex gap-x-4">
+              <div className="flex-col flex gap-y-4 w-[700px]">
+
+              {
+                comments.map((item,index) => (
+                      <div className='bg-white shadow p-[30px]' key={index}>
+                        <div className='flex justify-between items-center w-full'>
+                          <div className='flex items-center space-x-2'>
+                            <div className='h-14 w-14 bg-gray-400 flex items-center justify-center rounded-full'>
+                              <IconSelector id='user' fill='white'/>
+                            </div>
+                            <span className='text-[15px] font-bold'>{item.name}</span>
+                          </div>
+                          <div className='flex space-x-2 items-center'>
+                            <span className='text-gray-400'>4 мая 2022</span>
+                            <div className='flex items-center space-x-2'>
+                              <IconSelector id='star' fill={'gold'} />
+                              <span>{item.rate}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className='flex flex-col mt-5'>
+                          <span>Комментарий</span>
+                          <p className='mt-5'>
+                            {item.comment}
+                          </p>
+                        </div>
+                      </div>
+                ))
+              }
               </div>
-              <div className='flex flex-col mt-5'>
-                <span>Комментарий</span>
-                <p className='mt-5'>
-                  прекрасные кроссовки прекрасные кроссовки прекрасные кроссовки прекрасные кроссовки
-                  прекрасные кроссовки прекрасные кроссовки
-                </p>
-                <div className="self-end mt-5">
-                  <Button className='bg-secondary font-bold text-white px-8 rounded'>Открыт</Button>
-                </div>
-              </div>
-            </div>
-            <div className='bg-white shadow p-[30px]'>
-              <div className='flex justify-between items-center w-full'>
-                <div className='flex items-center space-x-2'>
-                  <div className='h-14 w-14 bg-gray-400 flex items-center justify-center rounded-full'>
-                    <IconSelector id='user' fill='white'/>
-                  </div>
-                  <span className='text-[15px] font-bold'>Имя. Фам</span>
-                </div>
-                <div className='flex space-x-2 items-center'>
-                  <span className='text-gray-400'>4 мая 2022</span>
-                  <div className='flex items-center space-x-2'>
-                    <IconSelector id='star' fill={'gold'} />
-                    <span> 3.5</span>
-                  </div>
-                </div>
-              </div>
-              <div className='flex flex-col mt-5'>
-                <span>Комментарий</span>
-                <p className='mt-5'>
-                  прекрасные кроссовки прекрасные кроссовки прекрасные кроссовки прекрасные кроссовки
-                  прекрасные кроссовки прекрасные кроссовки
-                </p>
-                <div className="self-end mt-5">
-                  <Button className='bg-secondary font-bold text-white px-8 rounded'>Открыт</Button>
-                </div>
-              </div>
-            </div>
-            <div className='bg-white shadow p-[30px]'>
-              <div className='flex justify-between items-center w-full'>
-                <div className='flex items-center space-x-2'>
-                  <div className='h-14 w-14 bg-gray-400 flex items-center justify-center rounded-full'>
-                    <IconSelector id='user' fill='white'/>
-                  </div>
-                  <span className='text-[15px] font-bold'>Имя. Фам</span>
-                </div>
-                <div className='flex space-x-2 items-center'>
-                  <span className='text-gray-400'>4 мая 2022</span>
-                  <div className='flex items-center space-x-2'>
-                    <IconSelector id='star' fill={'gold'} />
-                    <span> 3.5</span>
-                  </div>
-                </div>
-              </div>
-              <div className='flex flex-col mt-5'>
-                <span>Комментарий</span>
-                <p className='mt-5'>
-                  прекрасные кроссовки прекрасные кроссовки прекрасные кроссовки прекрасные кроссовки
-                  прекрасные кроссовки прекрасные кроссовки
-                </p>
-                <div className="self-end mt-5">
-                  <Button className='bg-secondary font-bold text-white px-8 rounded'>Открыт</Button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='p-[30px] flex flex-col self-start  w-[470px] bg-white shadow'>
+
+
+
+
+              <div className='p-[30px] flex flex-col self-start  w-[470px] bg-white shadow'>
             <div className='flex justify-between'>
               <div className='flex items-center space-x-2'>
                 <IconSelector id='star' fill='gold'/>
@@ -269,8 +251,8 @@ export const ProductInfo = () => {
               <div className='flex justify-between'>
                 <div className='flex items-center space-x-2'>
                   <IconSelector id='star' fill='gold'/>
-                  <IconSelector id='star' fill='gold'/>
-                  <IconSelector id='star' fill='gold'/>
+                  <IconSelector id='star' fill='gray'/>
+                  <IconSelector id='star' fill='gray'/>
                   <IconSelector id='star' fill='gray'/>
                   <IconSelector id='star' fill='gray'/>
                 </div>

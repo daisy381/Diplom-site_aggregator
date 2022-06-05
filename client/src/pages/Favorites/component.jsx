@@ -6,32 +6,28 @@ import {IconSelector} from "../../shared/IconSelector";
 import {BaseCard} from "../../components/Card/BaseCard";
 import {EmptyBlock} from "../../shared/components/EmptyBlock/component";
 
-//context
-import {useAppContext} from "../../context";
-
 //services
 import {productsServices} from "../../services/products";
-import {useFavorite} from "../../hooks";
 
 export const Favorites = () => {
 
-  const [state,setState] = useState([]);
+  const[favorites,setFavorites] = useState([]);
 
   async function fetchData() {
     try {
       let response = await productsServices.getFavouritesData();
-      setState(response);
+      setFavorites(response);
     } catch (e) {
       console.error(e.message);
     }
   }
 
-  useEffect(() => {
-    fetchData();
+  useEffect(async() => {
+    await fetchData();
   }, []);
 
 
-  if (!state.length) {
+  if (!favorites.length) {
     return <EmptyBlock
         iconId='heart'
         title='Избранные пусто'
@@ -45,9 +41,9 @@ export const Favorites = () => {
           <IconSelector id='heart' fill='#000' size={[50, 50]}/>
           <h1 className='text-[30px] uppercase font-bold'>Избранные</h1>
         </div>
-        <div className='flex flex-wrap mt-[40px] justify-center gap-x-4'>
+        <div className='flex flex-wrap mt-[40px] justify-center gap-10'>
           {
-            state.map( (item,index) => (<BaseCard key={index} {...item[0]}/>))
+            favorites.map( (item,index) => (<BaseCard key={index} {...item[0]}/>))
           }
         </div>
       </div>

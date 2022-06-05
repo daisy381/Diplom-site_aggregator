@@ -57,8 +57,8 @@ export const Cart = () => {
           <div className="flex space-x-2 mt-[20px]">
             <div className='flex flex-col flex-1 gap-y-5'>
               {
-                state.map(item => (
-                    <CartCard key={item[0].id} {...item[0]}/>
+                cartProducts.map(item => (
+                    <CartCard key={item.id} {...item}/>
                 ))
               }
             </div>
@@ -70,7 +70,7 @@ export const Cart = () => {
                   <span className='opacity-50'>5 кг</span>
                 </li>
                 <li className='flex flex-1 items-center justify-between'>
-                  <span>Товары ({cartProducts.length})</span>
+                  <span>Товары ({state.length})</span>
                   <span className='opacity-50'>{addSpaces(totalCost)}</span>
                 </li>
                 <li className='flex flex-1 items-center justify-between'>

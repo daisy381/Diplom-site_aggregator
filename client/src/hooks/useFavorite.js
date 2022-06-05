@@ -1,6 +1,7 @@
 //library
 import {useEffect, useState} from "react";
-import {useAppContext} from "../context";
+
+//services
 import {productsServices} from "../services/products";
 
 export const useFavorite = (product) => {
@@ -33,23 +34,23 @@ export const useFavorite = (product) => {
     }
   }
 
-  useEffect(() => {
-    fetchData();
+  useEffect(async () => {
+    await fetchData();
   }, []);
 
   useEffect( ()=>{
     setIsFavorite(favorites?.some(el => el[0]?.id === product.id))
   },[favorites])
 
-  const toggleFavorite = (e) => {
+  async function toggleFavorite (e){
     e.stopPropagation()
 
     if (isFavorite) {
-      deleteFavorite(product.id);
+      await deleteFavorite(product.id);
     } else {
-      addFavorite(product.id);
+      await addFavorite(product.id);
     }
-    fetchData();
+    await fetchData();
 
   }
 
