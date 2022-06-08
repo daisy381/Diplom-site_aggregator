@@ -68,7 +68,7 @@ export const Products = () => {
             return;
         } else {
             if(!valueDefined(search)){
-                let result = `/api/products?category_id=${categoryId}&limit=100`;
+                let result = `/api/products?category_id=${categoryId}&limit=20`;
                 const getBrand = valueDefined(brand) ? `&brand=${brand}` : ``;
                 const getFilter = valueDefined(price) ? getQueryPrice(price) : ``;
 

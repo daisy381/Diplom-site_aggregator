@@ -48,7 +48,7 @@ export const Cart = () => {
   }
 
   return (
-      <div className='my-[30px] grid'>
+      <div className='my-[30px] grid h-screen'>
         <div className="container max-w-[1180px] mx-auto">
           <div className='space-x-2 flex justify-center items-center'>
             <IconSelector id='cart' fill='#000' size={[50, 50]}/>

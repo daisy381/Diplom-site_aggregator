@@ -50,6 +50,8 @@ export const Reports = () => {
   const [history, setHistory] = useState([]);
   const [dataHistory, setDataHistory] = useState([]);
   const [labelHistory, setLabelHistory] = useState([]);
+  const [countries , setCountries] = useState({});
+  const [totalBought, setTotalBought] = useState(0);
 
 
   const dateTo = month[new Date().getMonth()]
@@ -58,6 +60,7 @@ export const Reports = () => {
 
   const onClickActiveItem = (item,index) => () => {
     getBrands(index+3);
+    getProducts();
     setTitle(item.name);
     setActiveItem(index);
   }
@@ -95,10 +98,44 @@ export const Reports = () => {
     }
   }
 
+  async function getProducts(){
+    try {
+      const response = await productsServices.getCategory(activeItem+3);
+      if (!response) return;
+
+      let getTotalBought = 0;
+      let getSalesAlmaty = 0;
+      let getSalesAstana = 0;
+      let getSalesKaraganda = 0;
+      let getSalesShymkent = 0;
+
+      for(let i = 0; i < response.data.length; i++){
+        getTotalBought += response.data[i].bought;
+        getSalesAlmaty += response.data[i].almaty;
+        getSalesAstana += response.data[i].astana;
+        getSalesKaraganda += response.data[i].karaganda;
+        getSalesShymkent += response.data[i].shymkent;
+      }
+
+      setCountries({
+        'almaty':getSalesAlmaty,
+        'astana':getSalesAstana,
+        'karaganda':getSalesKaraganda,
+        'shymkent':getSalesShymkent
+      })
+      setTotalBought(getTotalBought);
+
+    } catch (e) {
+      console.error(e.message);
+    }
+
+  }
+
   useEffect(()=>{
     getHistory();
     getBrands(3);
     getServices();
+    getProducts();
     setTitle(category[0].name)
   },[]);
 
@@ -133,7 +170,7 @@ export const Reports = () => {
             <div className='bg-white flex w-1/2 justify-between rounded-3xl px-[30px] py-[30px] shadow-md'>
               <div className='flex gap-y-5 flex-col'>
                 <span className='opacity-50 text-[16px] font-medium'>{title}</span>
-                <span className='text-blue-900 text-[24px] font-bold'>$124 345</span>
+                <span className='text-blue-900 text-[24px] font-bold'>{totalBought}</span>
                 <div className='flex gap-x-4'>
                   <span className='text-green-500 font-bold text-[16px]'>47%</span>
                   <span className='font-medium opacity-50 text-[16px]'> since last month</span>
@@ -180,7 +217,7 @@ export const Reports = () => {
 
             <div className="flex p-8 flex flex-col grow bg-white rounded-3xl shadow-md">
               <span className='text-blue-900 text-[22px] font-medium mb-[20px]'>Sales by country</span>
-              <Table/>
+              <Table sales={countries}/>
             </div>
           </div>
 

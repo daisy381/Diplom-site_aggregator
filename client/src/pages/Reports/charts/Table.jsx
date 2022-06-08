@@ -1,6 +1,6 @@
 import { Table as TableAnt} from 'antd';
 
-export const Table = () => {
+export const Table = ({sales}) => {
 
     const columns = [
         {
@@ -24,25 +24,25 @@ export const Table = () => {
         {
             key: '1',
             city: 'Almaty',
-            sales: 32,
+            sales: sales?.almaty,
             address: 'New York No. 1 Lake Park',
         },
         {
             key: '2',
             city: 'Astana',
-            sales: 42,
+            sales: sales?.astana,
             address: 'London No. 1 Lake Park',
         },
         {
             key: '3',
             city: 'Karaganda',
-            sales: 32,
+            sales: sales?.karaganda,
             address: 'Sidney No. 1 Lake Park',
         },
         {
             key: '4',
             city: 'Shymkent',
-            sales: 32,
+            sales: sales?.shymkent,
             address: 'Sidney No. 1 Lake Park',
         },
     ];
